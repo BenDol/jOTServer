@@ -15,13 +15,11 @@ public class AddCreatureAction extends ActionVisitor {
 		this.creature = creature;
 		this.pathFind = pathFind;
 	}
-	
-	
+
 	public void execute(Tile tile) {
 		tile.executeAddCreature(creature);
 	}
-	
-	
+
 	public boolean test(Tile tile) {
 		ErrorType error = tile.queryAddCreature(creature, pathFind);
 		if(error != ErrorType.NONE) {
@@ -29,5 +27,4 @@ public class AddCreatureAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
 }

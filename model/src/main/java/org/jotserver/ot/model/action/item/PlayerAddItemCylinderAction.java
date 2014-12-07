@@ -19,8 +19,7 @@ public class PlayerAddItemCylinderAction extends AddItemCylinderAction {
 		this.player = player;
 		this.item = item;
 	}
-	
-	
+
 	public boolean test(Inventory inventory) {
 		if(!super.test(inventory)) {
 			//
@@ -32,7 +31,6 @@ public class PlayerAddItemCylinderAction extends AddItemCylinderAction {
 		return !hasFailed();
 	}
 
-	
 	public boolean test(Tile tile) {
 		if(!super.test(tile)) {
 			//
@@ -44,7 +42,6 @@ public class PlayerAddItemCylinderAction extends AddItemCylinderAction {
 		return !hasFailed();
 	}
 
-	
 	public boolean test(Container container) {
 		if(!super.test(container)) {
 			//
@@ -57,5 +54,4 @@ public class PlayerAddItemCylinderAction extends AddItemCylinderAction {
 		}
 		return !hasFailed();
 	}
-	
 }

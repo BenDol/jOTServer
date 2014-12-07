@@ -17,26 +17,21 @@ public class RemoveItemCylinderAction extends ActionVisitor {
 		removedItem = item;
 	}
 	
-	
 	public void execute(Inventory inventory) {
 		inventory.executeRemoveItem(item);
 		removedItem = item;
 	}
-	
-	
+
 	public void execute(Tile tile) {
 		tile.executeRemoveItem(item);
 		removedItem = item;
 	}
-	
-	
+
 	public void execute(Container container) {
 		container.executeRemoveItem(item);
 		removedItem = item;
 	}
-	
-	
-	
+
 	public boolean test(Inventory inventory) {
 		ErrorType error = inventory.queryRemoveItem(item);
 		if(error != ErrorType.NONE) {
@@ -44,8 +39,7 @@ public class RemoveItemCylinderAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
-	
+
 	public boolean test(Tile tile) {
 		ErrorType error = tile.queryRemoveItem(item);
 		if(error != ErrorType.NONE) {
@@ -53,8 +47,7 @@ public class RemoveItemCylinderAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
-	
+
 	public boolean test(Container container) {
 		ErrorType error = container.queryRemoveItem(item);
 		if(error != ErrorType.NONE) {
@@ -66,5 +59,4 @@ public class RemoveItemCylinderAction extends ActionVisitor {
 	public Item getRemovedItem() {
 		return removedItem;
 	}
-	
 }

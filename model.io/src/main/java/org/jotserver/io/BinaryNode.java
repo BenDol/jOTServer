@@ -1,16 +1,11 @@
 package org.jotserver.io;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jotserver.net.CData;
 import org.jotserver.net.CDataInputStream;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BinaryNode {
 	
@@ -21,8 +16,7 @@ public class BinaryNode {
 	private List<BinaryNode> children;
 	private int type;
 	private ByteArrayOutputStream data;
-	
-	
+
 	public static BinaryNode load(String file) throws IOException {
 		InputStream in = new BufferedInputStream(new FileInputStream(file));
 		BinaryNode ret = load(in);
@@ -90,6 +84,4 @@ public class BinaryNode {
 	public BinaryNode getFirstChild() {
 		return children.get(0);
 	}
-	
-	
 }

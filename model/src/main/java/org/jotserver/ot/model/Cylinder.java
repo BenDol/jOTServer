@@ -8,8 +8,11 @@ import org.jotserver.ot.model.util.Location;
 
 public interface Cylinder extends ActionVisitable {
 	public Tile getTile();
+
 	public Cylinder getParent();
+
 	public boolean isPlaced();
+
 	public boolean isVisibleTo(Creature creature);
 	
 	public <T extends Creature> Spectators<T> getContentsSpectators(Class<T> type);

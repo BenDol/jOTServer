@@ -40,5 +40,4 @@ public class MoveCreatureAction extends Action {
 			return true;
 		}
 	}
-	
 }

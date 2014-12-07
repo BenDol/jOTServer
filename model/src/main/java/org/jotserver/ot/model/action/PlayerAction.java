@@ -33,5 +33,4 @@ public abstract class PlayerAction extends Action {
 		}
 		return false;
 	}
-
 }

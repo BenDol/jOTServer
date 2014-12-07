@@ -28,5 +28,4 @@ public class AbstractActionBean implements ActionBean {
 	protected void addMessage(String key, Object... parameters) {
 		getContext().getMessages().add(new LocalizableMessage(key, parameters));
 	}
-
 }

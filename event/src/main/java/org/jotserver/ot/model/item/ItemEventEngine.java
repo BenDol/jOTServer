@@ -29,5 +29,4 @@ public class ItemEventEngine {
 		int itemid = event.getItem().getId();
 		getMappings(itemid).executeItemUse(event);
 	}
-	
 }

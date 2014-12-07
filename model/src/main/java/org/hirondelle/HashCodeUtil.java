@@ -106,7 +106,6 @@ public final class HashCodeUtil {
     return result;
   }
 
-
   /// PRIVATE ///
   private static final int fODD_PRIME_NUMBER = 37;
 

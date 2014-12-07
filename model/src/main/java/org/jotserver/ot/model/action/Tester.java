@@ -13,11 +13,15 @@ public interface Tester {
 	public boolean test(Thing thing);
 	
 	public boolean test(Item item);
+
 	public boolean test(Stackable stackable);
+
 	public boolean test(Container container);
+
 	public boolean test(Inventory inventory);
 	
 	public boolean test(Creature creature);
+
 	public boolean test(Player player);
 	
 	public boolean test(Tile tile);

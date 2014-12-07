@@ -1,10 +1,6 @@
 package org.jotserver.configuration;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.jotserver.io.PropertiesAccessor;
 import org.jotserver.ot.model.MOTD;
 import org.jotserver.ot.model.MOTDAccessException;
@@ -18,7 +14,10 @@ import org.jotserver.ot.model.world.GameWorldAccessor;
 import org.jotserver.ot.model.world.GameWorldConfigurationAccessor;
 import org.jotserver.ot.model.world.PropertiesGameWorldAccessor;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class PropertiesConfigurationAccessor extends PropertiesAccessor implements ConfigurationAccessor, MOTDAccessor, ConnectionProvider {
 	
@@ -30,8 +29,7 @@ public class PropertiesConfigurationAccessor extends PropertiesAccessor implemen
 		gameWorldAccessor = null;
 		dataSource = null;
 	}
-	
-	
+
 	public Connection getConnection() {
 		if(dataSource == null) {
 			dataSource = new ComboPooledDataSource();
@@ -68,13 +66,11 @@ public class PropertiesConfigurationAccessor extends PropertiesAccessor implemen
 	public int getPort() {
 		return getInt("port");
 	}
-	
-	
+
 	public AccountAccessor getAccountAccessor() {
 		return new MySQLAccountAccessor(this);
 	}
 
-	
 	public GameWorldAccessor<GameWorld> getGameWorldAccessor() {
 		return getPropertiesGameWorldAccessor();
 	}
@@ -92,17 +88,14 @@ public class PropertiesConfigurationAccessor extends PropertiesAccessor implemen
 		return gameWorldAccessor;
 	}
 
-	
 	public MOTD getMOTD() throws MOTDAccessException {
 		return new MOTD(getInt("motd.number", 1), get("motd.message", "Welcome"));
 	}
 
-	
 	public MOTDAccessor getMOTDAccessor() {
 		return this;
 	}
 
-	
 	public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor() {
 		return getPropertiesGameWorldAccessor();
 	}
@@ -110,5 +103,4 @@ public class PropertiesConfigurationAccessor extends PropertiesAccessor implemen
 	public PlayerAccessor getPlayerAccessor() {
 		return new MySQLPlayerAccessor(this);
 	}
-	
 }

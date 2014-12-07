@@ -11,5 +11,4 @@ enum OTBMNodeType {
 	public static OTBMNodeType get(int i) {
 		return values()[i];
 	}
-	
 }

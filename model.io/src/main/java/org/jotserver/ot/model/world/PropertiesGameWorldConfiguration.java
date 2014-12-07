@@ -1,11 +1,6 @@
 package org.jotserver.ot.model.world;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.jotserver.configuration.ConfigurationException;
 import org.jotserver.configuration.ConnectionProvider;
 import org.jotserver.io.PropertiesAccessor;
@@ -19,7 +14,11 @@ import org.jotserver.ot.model.map.OTBMMapAccessor;
 import org.jotserver.ot.model.player.MySQLPlayerDataAccessor;
 import org.jotserver.ot.model.player.PlayerDataAccessor;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class PropertiesGameWorldConfiguration extends PropertiesAccessor implements GameWorldConfiguration, ConnectionProvider {
 	
@@ -35,8 +34,7 @@ public class PropertiesGameWorldConfiguration extends PropertiesAccessor impleme
 		itemTypeAccessor = null;
 		outfitAccessor = null;
 	}
-	
-	
+
 	public Connection getConnection() {
 		if(dataSource == null) {
 			dataSource = new ComboPooledDataSource();
@@ -64,22 +62,18 @@ public class PropertiesGameWorldConfiguration extends PropertiesAccessor impleme
 		return getString("datasource.password");
 	}
 
-	
 	public String getDirectory() {
 		return getString("data.directory");
 	}
 
-	
 	public String getMapIdentifier() {
 		return getString("data.map.identifier");
 	}
 
-	
 	public PlayerDataAccessor getPlayerDataAccessor() {
 		return new MySQLPlayerDataAccessor(this);
 	}
 
-	
 	public MapAccessor getMapAccessor() {
 		if(mapAccessor == null) {
 			mapAccessor = new OTBMMapAccessor();
@@ -87,7 +81,6 @@ public class PropertiesGameWorldConfiguration extends PropertiesAccessor impleme
 		return mapAccessor;
 	}
 
-	
 	public ItemTypeAccessor getItemTypeAccessor() {
 		if(itemTypeAccessor == null) {
 			itemTypeAccessor = new OTBItemTypeAccessor(10000);
@@ -102,7 +95,6 @@ public class PropertiesGameWorldConfiguration extends PropertiesAccessor impleme
 		return itemTypeAccessor;
 	}
 
-	
 	public OutfitAccessor getOutfitAccessor() {
 		if(outfitAccessor == null) {
 			outfitAccessor = new XMLOutfitAccessor();
@@ -114,5 +106,4 @@ public class PropertiesGameWorldConfiguration extends PropertiesAccessor impleme
 		}
 		return outfitAccessor;
 	}
-
 }

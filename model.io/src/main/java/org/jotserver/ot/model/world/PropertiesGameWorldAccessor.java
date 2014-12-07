@@ -1,16 +1,12 @@
 package org.jotserver.ot.model.world;
 
+import org.jotserver.configuration.ConfigurationException;
+import org.jotserver.io.PropertiesAccessor;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
-
-import org.jotserver.configuration.ConfigurationException;
-import org.jotserver.io.PropertiesAccessor;
+import java.util.*;
 
 public class PropertiesGameWorldAccessor extends PropertiesAccessor implements GameWorldAccessor<GameWorld>, GameWorldConfigurationAccessor {
 	
@@ -28,13 +24,11 @@ public class PropertiesGameWorldAccessor extends PropertiesAccessor implements G
 		load();
 	}
 
-	
 	public GameWorld getGameWorld(String identifier) {
 		GameWorld ret = cache.get(identifier);
 		return ret;
 	}
 
-	
 	public Collection<GameWorld> getGameWorlds() {
 		return new ArrayList<GameWorld>(cache.values());
 	}
@@ -74,7 +68,6 @@ public class PropertiesGameWorldAccessor extends PropertiesAccessor implements G
 		cache.put(string, ret);
 	}
 
-	
 	public GameWorldConfiguration getGameWorldConfiguration(String identifier) {
 		try {
 			return new PropertiesGameWorldConfiguration(getParentPath() + identifier + ".properties");

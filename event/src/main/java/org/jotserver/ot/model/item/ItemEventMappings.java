@@ -21,5 +21,4 @@ public class ItemEventMappings {
 			handler.onUse(event);
 		}
 	}
-
 }

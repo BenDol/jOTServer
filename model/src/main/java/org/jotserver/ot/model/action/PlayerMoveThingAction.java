@@ -46,5 +46,4 @@ public class PlayerMoveThingAction extends Action {
 			return false;
 		}
 	}
-	
 }

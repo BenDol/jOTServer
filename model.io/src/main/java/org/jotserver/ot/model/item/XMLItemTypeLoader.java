@@ -1,20 +1,20 @@
 package org.jotserver.ot.model.item;
 
-import static org.jotserver.ot.model.item.ItemAttribute.*;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.apache.log4j.Logger;
 import org.jotserver.ot.model.player.InventorySlot;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.jotserver.ot.model.item.ItemAttribute.*;
 
 public class XMLItemTypeLoader extends DefaultHandler {
 	private static Logger logger = Logger.getLogger(XMLItemTypeLoader.class);
@@ -49,11 +49,9 @@ public class XMLItemTypeLoader extends DefaultHandler {
 		}
 	}
 
-	
 	public void startDocument() throws SAXException {
 		current = null;
 	}
-	
 	
 	public void startElement(String uri, String localName, String name, Attributes attr) {
 		

@@ -23,8 +23,7 @@ public class MySQLPlayerAccessor implements PlayerAccessor, ConnectionProvider {
 		this.provider = provider;
 		vipAccessor = null;
 	}
-	
-	
+
 	public Player getPlayer(String name, GameWorldAccessor<? extends GameWorld> gameWorldAccessor) throws PlayerAccessException {
 		try {
 			return loadPlayer(name, gameWorldAccessor);
@@ -33,8 +32,7 @@ public class MySQLPlayerAccessor implements PlayerAccessor, ConnectionProvider {
 			throw new PlayerAccessException("Failed to load player.", e);
 		}
 	}
-	
-	
+
 	public PlayerList getPlayerList(Account account, GameWorldAccessor<? extends GameWorld> gameWorldAccessor) throws PlayerAccessException {
 		try {
 			return loadPlayerList(account.getNumber(), gameWorldAccessor);
@@ -101,7 +99,6 @@ public class MySQLPlayerAccessor implements PlayerAccessor, ConnectionProvider {
 		return player;
 	}
 
-
 	public void createPlayer(Account account, Player player)
 			throws PlayerAccessException {
 		try {
@@ -147,7 +144,6 @@ public class MySQLPlayerAccessor implements PlayerAccessor, ConnectionProvider {
 		}
 		return vipAccessor;
 	}
-
 
 	public Connection getConnection() {
 		return provider.getConnection();

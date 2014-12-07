@@ -1,12 +1,12 @@
 package org.jotserver.ot.model.map;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 import org.jotserver.configuration.ConfigurationException;
 import org.jotserver.ot.model.world.LocalGameWorld;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class OTBMMapAccessor implements MapAccessor {
 	private static Logger logger = Logger.getLogger(OTBMMapAccessor.class);
@@ -16,13 +16,11 @@ public class OTBMMapAccessor implements MapAccessor {
 	public OTBMMapAccessor() {
 		maps = new HashMap<String, OTBMMap>();
 	}
-	
-	
+
 	public void freeMap(String identifier) {
 		maps.remove(identifier);
 	}
 
-	
 	public Map loadMap(String directory, String identifier, LocalGameWorld world) {
 		OTBMMap map = maps.get(identifier);
 		if(map == null) {
@@ -39,5 +37,4 @@ public class OTBMMapAccessor implements MapAccessor {
 		}
 		return map;
 	}
-
 }

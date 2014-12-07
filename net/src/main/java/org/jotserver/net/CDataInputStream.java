@@ -106,6 +106,4 @@ public class CDataInputStream extends InputStream {
 	public long skip(long arg0) throws IOException {
 		return stream.skip(arg0);
 	}
-
-
 }

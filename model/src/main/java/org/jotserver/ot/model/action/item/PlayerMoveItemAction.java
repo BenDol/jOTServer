@@ -24,8 +24,7 @@ public class PlayerMoveItemAction extends PlayerAction {
 		this.count = count;
 		this.to = to;
 	}
-	
-	
+
 	public boolean execute() {
 		ActionVisitor remove = null;
 		ActionVisitable removeFrom = null;
@@ -88,5 +87,4 @@ public class PlayerMoveItemAction extends PlayerAction {
 		addTo.execute(add);
 		return true;
 	}
-
 }

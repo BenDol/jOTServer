@@ -1,11 +1,11 @@
 package org.jotserver.ot.model.chat;
 
+import org.jotserver.ot.model.TextMessageType;
+import org.jotserver.ot.model.action.ErrorType;
+import org.jotserver.ot.model.creature.Creature;
+
 import java.util.Collection;
 import java.util.Collections;
-
-import org.jotserver.ot.model.TextMessageType;
-import org.jotserver.ot.model.creature.Creature;
-import org.jotserver.ot.model.action.ErrorType;
 
 public class PrivateMessageChannel implements OwnedChatChannel, JoinableChatChannel {
 	
@@ -14,43 +14,35 @@ public class PrivateMessageChannel implements OwnedChatChannel, JoinableChatChan
 	public PrivateMessageChannel(Creature owner) {
 		this.owner = owner;
 	}
-	
-	
+
 	public boolean close(Creature creature) {
 		return false;
 	}
 
-	
 	public Creature getOwner() {
 		return owner;
 	}
 
-	
 	public boolean speak(Creature creature, SpeakType type, String text) {
 		return true;
 	}
 
-	
 	public boolean invite(Creature creature, Creature invited) {
 		return false;
 	}
 
-	
 	public boolean join(Creature creature) {
 		return true;
 	}
 
-	
 	public boolean kick(Creature creature, Creature kicked) {
 		return false;
 	}
 
-	
 	public boolean uninvite(Creature creature, Creature invited) {
 		return false;
 	}
-	
-	
+
 	public Collection<Creature> getMembers() {
 		return Collections.singleton(owner);
 	}
@@ -74,5 +66,4 @@ public class PrivateMessageChannel implements OwnedChatChannel, JoinableChatChan
 	public boolean isInvited(Creature creature) {
 		return true;
 	}
-	
 }

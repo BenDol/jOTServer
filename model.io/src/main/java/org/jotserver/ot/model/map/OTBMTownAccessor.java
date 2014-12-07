@@ -1,13 +1,13 @@
 package org.jotserver.ot.model.map;
 
+import org.jotserver.io.BinaryNode;
+import org.jotserver.net.CDataInputStream;
+import org.jotserver.ot.model.util.Position;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-
-import org.jotserver.io.BinaryNode;
-import org.jotserver.net.CDataInputStream;
-import org.jotserver.ot.model.util.Position;
 
 public class OTBMTownAccessor implements TownAccessor {
 	
@@ -57,5 +57,4 @@ public class OTBMTownAccessor implements TownAccessor {
 	public Collection<Town> getTowns() {
 		return Collections.unmodifiableCollection(townMap.values());
 	}
-
 }

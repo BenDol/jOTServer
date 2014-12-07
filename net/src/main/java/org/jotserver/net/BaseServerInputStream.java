@@ -234,5 +234,4 @@ public class BaseServerInputStream extends InputStream {
 		}
 		resetCache.clear();
 	}
-	
 }

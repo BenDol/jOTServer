@@ -18,24 +18,20 @@ public class AddItemCylinderAction extends ActionVisitor {
 		this.item = item;
 		this.to = to;
 	}
-	
-	
+
 	public void execute(Inventory inventory) {
 		InventorySlot slot = InventorySlot.getSlot(to.getIndex());
 		inventory.executeAddItem(slot, item);
 	}
-	
-	
+
 	public void execute(Tile tile) {
 		tile.executeAddItem(item);
 	}
-	
-	
+
 	public void execute(Container container) {
 		container.executeAddItem(item);
 	}
-	
-	
+
 	public boolean test(Container container) {
 		ErrorType error = container.queryAddItem(item);
 		if(error != ErrorType.NONE) {
@@ -43,8 +39,7 @@ public class AddItemCylinderAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
-	
+
 	public boolean test(Inventory inventory) {
 		InventorySlot slot = InventorySlot.getSlot(to.getIndex());
 		if(slot == null) {
@@ -57,8 +52,7 @@ public class AddItemCylinderAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
-	
+
 	public boolean test(Tile tile) {
 		ErrorType error = tile.queryAddItem(item);
 		if(error != ErrorType.NONE) {
@@ -66,5 +60,4 @@ public class AddItemCylinderAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
 }

@@ -23,7 +23,7 @@ import java.util.concurrent.ScheduledExecutorService;
 public class JOTServer {
 	
 	public static void main(String[] args) throws IOException, MOTDAccessException {
-		
+
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
 		ConfigurationAccessor config = new PropertiesConfigurationAccessor("config.properties");
 		
@@ -44,13 +44,11 @@ public class JOTServer {
 			}
 		}
 		final LocalGameWorldAccessor localGameWorlds = new LocalGameWorldAccessor(localWorlds);
-		
-		
+
 		BaseServer server = new BaseServer(config.getPort());
 		List<ProtocolProvider> protocolProviders = new ArrayList<ProtocolProvider>();
 		
 		protocolProviders.add(new ProtocolProvider() {
-			
 			public Protocol getProtocol(int type) {
 				if(type == LoginProtocol.PROTOCOLID) {
 					return new LoginProtocol(accounts, players, worlds, motd);
@@ -60,7 +58,6 @@ public class JOTServer {
 			}});
 		
 		protocolProviders.add(new ProtocolProvider() {
-			
 			public Protocol getProtocol(int type) {
 				if(type == GameProtocol.PROTOCOLID) {
 					return new GameProtocol(localGameWorlds, accounts, players);
@@ -70,9 +67,11 @@ public class JOTServer {
 			}});
 		
 		server.addConnectionListener(new ConnectionInitializer(protocolProviders));
-		
+
+        // Force garbage collection
 		System.gc();
-		
+
+        // Start the server
 		server.start();
 	}
 }

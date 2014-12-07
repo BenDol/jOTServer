@@ -214,8 +214,8 @@ public class MySQLPlayerDataAccessor implements PlayerDataAccessor {
 			ItemType type = items.getItemType(itemId);
 			if (type == null) {
 				throw new PlayerAccessException(
-						"Attempted to load invalid item with id " + itemId
-								+ " to player " + inventory.getPlayer() + ".");
+                    "Attempted to load invalid item with id " + itemId
+                    + " to player " + inventory.getPlayer() + ".");
 			} else {
 				Item item = items.createItem(type);
 				if (type.isContainer()) {
@@ -250,10 +250,9 @@ public class MySQLPlayerDataAccessor implements PlayerDataAccessor {
 			delete.close();
 		}
 
-		PreparedStatement stmt = connection
-				.prepareStatement("INSERT INTO `player_items` "
-						+ "(`player_id`, `id`, `parent`, `index`, `itemid`) "
-						+ "VALUES(?, ?, ?, ?, ?)");
+		PreparedStatement stmt = connection.prepareStatement("INSERT INTO `player_items` "
+            + "(`player_id`, `id`, `parent`, `index`, `itemid`) "
+            + "VALUES(?, ?, ?, ?, ?)");
 		try {
 			int id = 1;
 			for (InventorySlot slot : InventorySlot.values()) {
@@ -287,8 +286,6 @@ public class MySQLPlayerDataAccessor implements PlayerDataAccessor {
 						playerId, id, thisId, i);
 			}
 		}
-
 		return id;
 	}
-
 }

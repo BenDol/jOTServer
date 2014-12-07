@@ -10,13 +10,11 @@ public class UseThingAction extends ActionVisitor {
 	public UseThingAction(Creature creature) {
 		this.creature = creature;
 	}
-	
-	
+
 	public void execute(Item item) {
 		item.executeUse(creature);
 	}
-	
-	
+
 	public boolean test(Item item) {
 		ErrorType error = item.queryUse(creature);
 		if(error != ErrorType.NONE) {

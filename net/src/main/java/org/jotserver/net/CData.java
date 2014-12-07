@@ -82,9 +82,7 @@ public class CData {
 	    String str = new String(b, 0, l, CHARACTER_ENCODING);
 	    return str;
 	}
-	
-	
-	
+
 	/**
 	 * Writes the given value as an unsigned byte to the given output stream. This method only 
 	 * provides a reliable result when value is in the range of 0 - 255.

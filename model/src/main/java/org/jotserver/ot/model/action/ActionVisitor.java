@@ -51,5 +51,4 @@ public abstract class ActionVisitor implements Visitor, Tester {
 	public boolean hasFailed() {
 		return error != ErrorType.NONE;
 	}
-	
 }

@@ -1,7 +1,5 @@
 package org.jotserver.ot.model.chat;
 
-import java.util.StringTokenizer;
-
 import org.jotserver.ot.model.creature.Creature;
 import org.jotserver.ot.model.world.LocalGameWorld;
 
@@ -14,11 +12,9 @@ public class ConsoleChannel extends PublicChatChannel {
 		this.world = world;
 	}
 
-	
 	public boolean join(Creature creature) {
 		return true;
 	}
-
 	
 	public boolean speak(Creature creature, SpeakType type, String text) {
 		return true;
@@ -79,7 +75,4 @@ public class ConsoleChannel extends PublicChatChannel {
 			}
 		}*/
 	}
-	
-	
-	
 }

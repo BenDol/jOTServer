@@ -1,8 +1,8 @@
 package org.jotserver.ot.model.chat;
 
-import java.util.HashMap;
-
 import org.jotserver.ot.model.world.LocalGameWorld;
+
+import java.util.HashMap;
 
 
 public class ChatChannelEventEngine {
@@ -35,5 +35,4 @@ public class ChatChannelEventEngine {
 	public DefaultChatChannelMappings getDefaultMappings() {
 		return defaultMappings;
 	}
-	
 }

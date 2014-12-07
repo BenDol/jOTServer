@@ -1,20 +1,12 @@
 package org.jotserver.ot.model.event;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-
 import org.apache.log4j.Logger;
 import org.jotserver.ot.model.chat.ChatChannelEventEngine;
 import org.jotserver.ot.model.item.ItemEventEngine;
 import org.jotserver.ot.model.world.LocalGameWorld;
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.ContextFactory;
-import org.mozilla.javascript.Function;
-import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.ScriptableObject;
+import org.mozilla.javascript.*;
+
+import java.io.*;
 
 public class JavaScriptEventEngine implements EventEngine {
 	private static final Logger logger = Logger.getLogger(JavaScriptEventEngine.class);
@@ -112,5 +104,4 @@ public class JavaScriptEventEngine implements EventEngine {
 			throw new IOException("Module init file not found. Expected filename: " + file.getAbsolutePath() + ".");
 		}
 	}
-
 }

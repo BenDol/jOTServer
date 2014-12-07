@@ -27,5 +27,4 @@ public aspect ChatChannelHandler {
 			return false;
 		}
 	}
-	
 }

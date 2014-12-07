@@ -27,5 +27,4 @@ public aspect ItemHandler {
 			}};
 		itemEngine.executeItemUse(event);
 	}
-	
 }

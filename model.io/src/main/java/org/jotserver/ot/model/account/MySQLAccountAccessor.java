@@ -16,8 +16,7 @@ public class MySQLAccountAccessor implements AccountAccessor {
 	public MySQLAccountAccessor(ConnectionProvider provider) {
 		this.provider = provider;
 	}
-	
-	
+
 	public Account getAccount(long number) throws AccountAccessException {
 		try {
 			return loadAccount(number);
@@ -26,8 +25,7 @@ public class MySQLAccountAccessor implements AccountAccessor {
 			throw new AccountAccessException("Failed to load account.\nPlease contact an administrator.");
 		}
 	}
-	
-	
+
 	public Account getAccount(long number, String playerName) throws AccountAccessException {
 		try {
 			return loadAccount(number, playerName);
@@ -118,7 +116,6 @@ public class MySQLAccountAccessor implements AccountAccessor {
 		}
 	}
 
-
 	public void saveAccount(Account account) throws AccountAccessException {
 		try {
 			internalSaveAccount(account);
@@ -147,5 +144,4 @@ public class MySQLAccountAccessor implements AccountAccessor {
 			connection.close();
 		}
 	}
-
 }

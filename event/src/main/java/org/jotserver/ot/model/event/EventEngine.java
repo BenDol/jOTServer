@@ -6,6 +6,8 @@ import org.jotserver.ot.model.world.LocalGameWorld;
 
 public interface EventEngine {
 	public void init(LocalGameWorld world);
+
 	public ItemEventEngine getItemEngine();
+
 	public ChatChannelEventEngine getChatEngine();
 }

@@ -32,5 +32,4 @@ public class ChatChannelList<T extends IdentifiableChatChannel> {
 	public Collection<T> getChannels() {
 		return new ArrayList<T>(channels.values());
 	}
-	
 }

@@ -1,9 +1,9 @@
 package org.jotserver.ot.model.world;
 
-import java.io.File;
-
 import org.jotserver.ot.model.event.EventEngine;
 import org.jotserver.ot.model.event.JavaScriptEventEngine;
+
+import java.io.File;
 
 public aspect LocalGameWorldInitializer {
 	
@@ -22,5 +22,4 @@ public aspect LocalGameWorldInitializer {
 		world.eventEngine = new JavaScriptEventEngine(path);
 		world.eventEngine.init(world);
 	}
-	
 }

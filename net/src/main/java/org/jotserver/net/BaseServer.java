@@ -1,10 +1,5 @@
 package org.jotserver.net;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
@@ -14,6 +9,11 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.executor.ExecutorFilter;
 import org.apache.mina.filter.executor.OrderedThreadPoolExecutor;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An instance of the BaseServer class is the main entry point for any server based on this 
@@ -99,7 +99,6 @@ public class BaseServer implements IoHandler {
         acceptor.bind( new InetSocketAddress( port ) );
         
         started = true;
-		
 	}
 	
 	/**
@@ -151,7 +150,6 @@ public class BaseServer implements IoHandler {
 		}
 	}
 
-	
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		IoBuffer buffer = (IoBuffer)message;
 		ClientSession clientSession = getClientSessionInstance(session);
@@ -163,7 +161,6 @@ public class BaseServer implements IoHandler {
 		clientSession.messageReceived(in);
 	}
 
-	
 	public void messageSent(IoSession session, Object message) throws Exception {
 		ClientSession clientSession = getClientSessionInstance(session);
 		for(ConnectionListener listener : listeners) {
@@ -172,7 +169,6 @@ public class BaseServer implements IoHandler {
 		clientSession.messageSent();
 	}
 
-	
 	public void sessionClosed(IoSession session) throws Exception {
 		ClientSession clientSession = getClientSessionInstance(session);
 		connections.remove(clientSession);
@@ -183,7 +179,6 @@ public class BaseServer implements IoHandler {
 		connections.remove(clientSession);
 	}
 
-	
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		ClientSession clientSession = getClientSessionInstance(session);
 		for(ConnectionListener listener : listeners) {
@@ -192,7 +187,6 @@ public class BaseServer implements IoHandler {
 		clientSession.sessionIdle();
 	}
 
-	
 	public void sessionOpened(IoSession session) throws Exception {
 		ClientSession clientSession = getClientSessionInstance(session);
 		for(ConnectionListener listener : listeners) {
@@ -265,5 +259,4 @@ public class BaseServer implements IoHandler {
 	public void removeAllConnectionListeners() {
 		listeners.clear();
 	}
-	
 }

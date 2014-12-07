@@ -21,7 +21,6 @@ public class InternalCreature extends InternalThing {
 	private int maxHealth;
 	
 	private int speed;
-	
 	private Light light;
 	
 	public InternalCreature(Creature creature, long id, String name, Cylinder parent) {
@@ -37,7 +36,6 @@ public class InternalCreature extends InternalThing {
 		
 		health = 150;
 		maxHealth = 150;
-		
 		speed = 900;
 	}
 	
@@ -77,8 +75,7 @@ public class InternalCreature extends InternalThing {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-	
+
 	/*
 	 * Public retrieval methods.
 	 */
@@ -118,5 +115,4 @@ public class InternalCreature extends InternalThing {
 	public Light getLight() {
 		return light;
 	}
-
 }

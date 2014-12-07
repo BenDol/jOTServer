@@ -1,8 +1,8 @@
 package org.jotserver.ot.model.chat;
 
-import java.util.LinkedList;
-
 import org.jotserver.ot.model.creature.Creature;
+
+import java.util.LinkedList;
 
 public class ChannelEventMappings {
 	
@@ -24,5 +24,4 @@ public class ChannelEventMappings {
 		}
 		return true;
 	}
-	
 }

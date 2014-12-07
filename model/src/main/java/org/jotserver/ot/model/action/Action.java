@@ -35,5 +35,4 @@ public abstract class Action {
 	protected void setState(State state) {
 		this.state = state;
 	}
-
 }

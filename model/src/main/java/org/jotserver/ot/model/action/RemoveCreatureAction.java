@@ -11,12 +11,10 @@ public class RemoveCreatureAction extends ActionVisitor {
 		this.creature = creature;
 	}
 
-	
 	public void execute(Tile tile) {
 		tile.executeRemoveCreature(creature);
 	}
 
-	
 	public boolean test(Tile tile) {
 		ErrorType error = tile.queryRemoveCreature(creature);
 		if(error != ErrorType.NONE) {
@@ -24,7 +22,4 @@ public class RemoveCreatureAction extends ActionVisitor {
 		}
 		return !hasFailed();
 	}
-	
-	
-	
 }

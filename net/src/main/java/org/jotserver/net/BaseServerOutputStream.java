@@ -1,11 +1,11 @@
 package org.jotserver.net;
 
+import org.apache.mina.core.buffer.IoBuffer;
+import org.apache.mina.core.session.IoSession;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.apache.mina.core.buffer.IoBuffer;
-import org.apache.mina.core.session.IoSession;
 
 /**
  * BaseServerOutputStream is an implementation of the OutputStream specification which 
@@ -30,22 +30,18 @@ public class BaseServerOutputStream extends OutputStream {
 		stream = new ByteArrayOutputStream();
 	}
 
-	
 	public void write(int b) throws IOException {
 		stream.write(b);
 	}
-	
-	
+
 	public void write(byte[] b, int off, int len) throws IOException {
 		stream.write(b, off, len);
 	}
-
 	
 	public void write(byte[] b) throws IOException {
 		stream.write(b);
 	}
-	
-	
+
 	public void flush() throws IOException {
 		stream.flush();
 		if(stream.size() > 0) {
@@ -53,8 +49,7 @@ public class BaseServerOutputStream extends OutputStream {
 			stream.reset();
 		}
 	}
-	
-	
+
 	public void close() throws IOException {
 		flush();
 		stream.close();
@@ -81,5 +76,4 @@ public class BaseServerOutputStream extends OutputStream {
 	public int size() {
 		return stream.size();
 	}
-
 }

@@ -13,11 +13,15 @@ public interface Visitor {
 	public void execute(Thing thing);
 	
 	public void execute(Item item);
+
 	public void execute(Stackable stackable);
+
 	public void execute(Container container);
+
 	public void execute(Inventory inventory);
 	
 	public void execute(Creature creature);
+
 	public void execute(Player player);
 	
 	public void execute(Tile tile);

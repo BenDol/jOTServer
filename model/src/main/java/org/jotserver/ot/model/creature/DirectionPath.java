@@ -1,10 +1,10 @@
 package org.jotserver.ot.model.creature;
 
-import java.util.Collection;
-import java.util.LinkedList;
-
 import org.jotserver.ot.model.util.Direction;
 import org.jotserver.ot.model.util.Position;
+
+import java.util.Collection;
+import java.util.LinkedList;
 
 public class DirectionPath implements Path {
 	
@@ -30,13 +30,11 @@ public class DirectionPath implements Path {
 	public void addStep(Direction direction) {
 		path.addLast(direction);
 	}
-	
-	
+
 	public Position getCurrentPosition() {
 		return position;
 	}
 
-	
 	public Direction getNextStep() {
 		if(path.isEmpty()) {
 			return null;
@@ -48,7 +46,6 @@ public class DirectionPath implements Path {
 			return ret;
 		}
 	}
-
 	
 	public boolean isEmpty() {
 		return path.isEmpty();
@@ -57,5 +54,4 @@ public class DirectionPath implements Path {
 	public void addStepFirst(Direction direction) {
 		path.addFirst(direction);
 	}
-
 }

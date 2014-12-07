@@ -53,5 +53,4 @@ public enum SpeakType {
 	public enum Type {
 		PUBLIC, CHANNEL, PRIVATE, RULEVIOLATION, BROADCAST, UNKNOWN;
 	}
-	
 }

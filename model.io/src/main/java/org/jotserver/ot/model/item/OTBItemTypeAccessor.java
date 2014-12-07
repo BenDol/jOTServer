@@ -1,13 +1,13 @@
 package org.jotserver.ot.model.item;
 
-import static org.jotserver.ot.model.item.ItemAttribute.*;
+import org.jotserver.io.BinaryNode;
+import org.jotserver.net.CData;
+import org.jotserver.ot.model.item.ItemType.Group;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.jotserver.io.BinaryNode;
-import org.jotserver.net.CData;
-import org.jotserver.ot.model.item.ItemType.Group;
+import static org.jotserver.ot.model.item.ItemAttribute.*;
 
 public class OTBItemTypeAccessor extends BaseItemTypeAccessor {
 	
@@ -37,41 +37,39 @@ public class OTBItemTypeAccessor extends BaseItemTypeAccessor {
 	
 	
 	public static final int ITEM_ATTR_SERVERID = 0x10,
-								ITEM_ATTR_CLIENTID = 0x11,
-								ITEM_ATTR_NAME = 0x12,
-								ITEM_ATTR_DESCR = 0x13,
-								ITEM_ATTR_SPEED = 0x14,
-								ITEM_ATTR_SLOT = 0x15,
-								ITEM_ATTR_MAXITEMS = 0x16,
-								ITEM_ATTR_WEIGHT = 0x17,
-								ITEM_ATTR_WEAPON = 0x18,
-								ITEM_ATTR_AMU = 0x19,
-								ITEM_ATTR_ARMOR = 0x1A,
-								ITEM_ATTR_MAGLEVEL = 0x1B,
-								ITEM_ATTR_MAGFIELDTYPE = 0x1C,
-								ITEM_ATTR_WRITEABLE = 0x1D,
-								ITEM_ATTR_ROTATETO = 0x1E,
-								ITEM_ATTR_DECAY = 0x1F,
-								ITEM_ATTR_SPRITEHASH = 0x20,
-								ITEM_ATTR_MINIMAPCOLOR = 0x21,
-								ITEM_ATTR_07 = 0x22,
-								ITEM_ATTR_08 = 0x23,
-								ITEM_ATTR_LIGHT = 0x24,
-								ITEM_ATTR_DECAY2 = 0x25,
-								ITEM_ATTR_WEAPON2 = 0x26,
-								ITEM_ATTR_AMU2 = 0x27,
-								ITEM_ATTR_ARMOR2 = 0x28,
-								ITEM_ATTR_WRITEABLE2 = 0x29,
-								ITEM_ATTR_LIGHT2 = 0x2A,
-								ITEM_ATTR_TOPORDER = 0x2B,
-								ITEM_ATTR_WRITEABLE3 = 0x2C;
-	
-	
+                            ITEM_ATTR_CLIENTID = 0x11,
+                            ITEM_ATTR_NAME = 0x12,
+                            ITEM_ATTR_DESCR = 0x13,
+                            ITEM_ATTR_SPEED = 0x14,
+                            ITEM_ATTR_SLOT = 0x15,
+                            ITEM_ATTR_MAXITEMS = 0x16,
+                            ITEM_ATTR_WEIGHT = 0x17,
+                            ITEM_ATTR_WEAPON = 0x18,
+                            ITEM_ATTR_AMU = 0x19,
+                            ITEM_ATTR_ARMOR = 0x1A,
+                            ITEM_ATTR_MAGLEVEL = 0x1B,
+                            ITEM_ATTR_MAGFIELDTYPE = 0x1C,
+                            ITEM_ATTR_WRITEABLE = 0x1D,
+                            ITEM_ATTR_ROTATETO = 0x1E,
+                            ITEM_ATTR_DECAY = 0x1F,
+                            ITEM_ATTR_SPRITEHASH = 0x20,
+                            ITEM_ATTR_MINIMAPCOLOR = 0x21,
+                            ITEM_ATTR_07 = 0x22,
+                            ITEM_ATTR_08 = 0x23,
+                            ITEM_ATTR_LIGHT = 0x24,
+                            ITEM_ATTR_DECAY2 = 0x25,
+                            ITEM_ATTR_WEAPON2 = 0x26,
+                            ITEM_ATTR_AMU2 = 0x27,
+                            ITEM_ATTR_ARMOR2 = 0x28,
+                            ITEM_ATTR_WRITEABLE2 = 0x29,
+                            ITEM_ATTR_LIGHT2 = 0x2A,
+                            ITEM_ATTR_TOPORDER = 0x2B,
+                            ITEM_ATTR_WRITEABLE3 = 0x2C;
+
 	public OTBItemTypeAccessor(int size) {
 		super(size);
 	}
-	
-	
+
 	public void loadFromOtb(String file) throws IOException {
 		BinaryNode root = BinaryNode.load(file);
 		loadFromBinary(root);
@@ -121,8 +119,7 @@ public class OTBItemTypeAccessor extends BaseItemTypeAccessor {
 	private void parseItemType(InputStream in, ItemType iType)
 			throws IOException {
 		long flags = CData.readU32(in);
-		
-		
+
 		iType.setAttribute(BLOCKSOLID, hasFlag(flags, FLAG_BLOCK_SOLID));
 		iType.setAttribute(BLOCKPROJECTILE, hasFlag(flags, FLAG_BLOCK_PROJECTILE));
 		iType.setAttribute(BLOCKPATHFIND, hasFlag(flags, FLAG_BLOCK_PATHFIND));

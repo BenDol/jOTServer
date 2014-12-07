@@ -1,5 +1,13 @@
 package org.jotserver.ot.model;
 
+import org.jotserver.io.TextInput;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,15 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.jotserver.io.TextInput;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class XMLOutfitAccessor extends DefaultHandler implements OutfitAccessor {
 	
@@ -42,8 +41,7 @@ public class XMLOutfitAccessor extends DefaultHandler implements OutfitAccessor 
 			throw new IOException(e);
 		}
 	}
-	
-	
+
 	public void startElement(String uri, String localName, String elementName,
 			Attributes attributes) throws SAXException {
 		
@@ -61,14 +59,11 @@ public class XMLOutfitAccessor extends DefaultHandler implements OutfitAccessor 
 		
 	}
 
-	
 	public Collection<OutfitType> getOutfits() {
 		return Collections.unmodifiableCollection(outfits.values());
 	}
-
 	
 	public OutfitType getOutfit(int look) {
 		return outfits.get(look);
 	}
-
 }

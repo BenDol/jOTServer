@@ -1,12 +1,12 @@
 package org.jotserver.ot.model.creature;
 
-import java.util.LinkedList;
-
 import org.jotserver.ot.model.action.Action;
 import org.jotserver.ot.model.action.ErrorType;
 import org.jotserver.ot.model.map.Tile;
 import org.jotserver.ot.model.util.Brain;
 import org.jotserver.ot.model.util.Direction;
+
+import java.util.LinkedList;
 
 public class CreatureWalkBrain extends Brain {
 	
@@ -20,7 +20,6 @@ public class CreatureWalkBrain extends Brain {
 		this.path = path;
 	}
 
-	
 	public void think() {
 		if(shouldCancel()) {
 			cancel();
@@ -36,23 +35,20 @@ public class CreatureWalkBrain extends Brain {
 		}
 	}
 
-
 	protected void performActions() {
-		while(!actions.isEmpty()) {
-			Action action = actions.poll();
-			if(!action.execute()) {
-				reportError(action.getError());
-				break;
-			}
-		}
-	}
-
+        while (!actions.isEmpty()) {
+            Action action = actions.poll();
+            if (!action.execute()) {
+                reportError(action.getError());
+                break;
+            }
+        }
+    }
 
 	protected void reportError(ErrorType error) {
 		creature.getPrivateChannel().sendCancel(error);
 		cancel();
 	}
-
 
 	protected void nextStep() {
 		Direction direction = path.getNextStep();
@@ -63,15 +59,12 @@ public class CreatureWalkBrain extends Brain {
 		}
 	}
 
-
 	protected boolean shouldCancel() {
-		return path == null || 
-				!creature.isPlaced() || 
-				(path.isEmpty() && actions.isEmpty()) || 
-				!creature.getPosition().equals(path.getCurrentPosition());
+		return path == null || !creature.isPlaced()
+            || (path.isEmpty() && actions.isEmpty())
+            || !creature.getPosition().equals(path.getCurrentPosition());
 	}
 
-	
 	public long getDelay() {
 		return creature.getStepDuration();
 	}
@@ -79,5 +72,4 @@ public class CreatureWalkBrain extends Brain {
 	public void addAction(Action action) {
 		actions.add(action);
 	}
-
 }

@@ -1,13 +1,13 @@
 package org.jotserver.io;
 
+import org.jotserver.configuration.ConfigurationException;
+import org.jotserver.configuration.ConfigurationProvider;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
-import org.jotserver.configuration.ConfigurationException;
-import org.jotserver.configuration.ConfigurationProvider;
 
 
 public class PropertiesAccessor implements ConfigurationProvider {
@@ -87,5 +87,4 @@ public class PropertiesAccessor implements ConfigurationProvider {
 			}
 		}
 	}
-
 }

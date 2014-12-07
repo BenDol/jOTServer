@@ -1,21 +1,17 @@
 package org.jotserver.ot.model.map;
 
-import static org.jotserver.ot.model.item.ItemAttribute.STACKABLE;
+import org.apache.log4j.Logger;
+import org.jotserver.io.BinaryNode;
+import org.jotserver.net.CData;
+import org.jotserver.ot.model.item.*;
+import org.jotserver.ot.model.util.Position;
+import org.jotserver.ot.model.world.LocalGameWorld;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
-import org.jotserver.io.BinaryNode;
-import org.jotserver.net.CData;
-import org.jotserver.ot.model.item.FluidType;
-import org.jotserver.ot.model.item.Item;
-import org.jotserver.ot.model.item.ItemType;
-import org.jotserver.ot.model.item.ItemTypeAccessor;
-import org.jotserver.ot.model.item.Stackable;
-import org.jotserver.ot.model.util.Position;
-import org.jotserver.ot.model.world.LocalGameWorld;
+import static org.jotserver.ot.model.item.ItemAttribute.STACKABLE;
 
 public class OTBMMap extends Map {
 	private static Logger logger = Logger.getLogger(OTBMMap.class);
@@ -39,8 +35,7 @@ public class OTBMMap extends Map {
 		tiles = new HashMap<Position, Tile>();
 		townAccessor = new OTBMTownAccessor();
 	}
-	
-	
+
 	public Tile getTile(Position position) {
 		return tiles.get(position);
 	}
@@ -215,9 +210,7 @@ public class OTBMMap extends Map {
 		}
 	}
 
-
 	public TownAccessor getTownAccessor() {
 		return townAccessor;
 	}
-
 }
