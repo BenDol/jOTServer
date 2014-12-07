@@ -1,0 +1,48 @@
+/* Custom style sheet definitions for JAMS. */
+
+.normaltext { 
+	white-space: normal;
+	font: 1.0em Verdana,Tahoma,Arial,sans-serif;
+}
+
+/* Highscores */
+.table_highscores .row1 {
+	
+}
+.table_highscores .row2 {
+	background-color: #f4f4f4;
+}
+.table_highscores .col_order {
+	font-weight: bold;
+}
+.table_highscores .row1 .col_order {
+	background-color: #f4f4f4;
+}
+.table_highscores .row2 .col_order {
+	background-color: #eaeaea;
+}
+
+/* Guild list */
+.table_guilds .row1 {
+	background-color: #f4f4f4;
+}
+.table_guilds .row2 {
+	background-color: #eaeaea;
+}
+.table_guilds .spacer {
+	background-color: #ffffff;
+	line-height: 1px;
+	height: 5px;
+}
+
+/* Guild Info */
+.table_guildranks .row1 {
+	background-color: #f4f4f4;
+}
+.table_guildranks .row2 {
+	background-color: #e0e0e0;
+}
+.guild_comment {
+	background-color: #ffffff;
+	border: 1px solid black;
+}
