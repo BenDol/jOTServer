@@ -3,7 +3,6 @@
  */
 Direction = org.jotserver.ot.model.util.Direction;
 Position = org.jotserver.ot.model.util.Position;
-Direction = org.jotserver.ot.model.util.Direction;
 Cylinder = org.jotserver.ot.model.Cylinder;
 Effect = org.jotserver.ot.model.Effect;
 Light = org.jotserver.ot.model.Light;
@@ -43,7 +42,6 @@ Stance = org.jotserver.ot.model.player.Stance;
 
 LocalGameWorld = org.jotserver.ot.model.world.LocalGameWorld;
 WorldState = org.jotserver.ot.model.world.WorldState;
-
 
 /*
  * Functions

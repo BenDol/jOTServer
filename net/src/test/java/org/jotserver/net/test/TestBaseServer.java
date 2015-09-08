@@ -1,6 +1,5 @@
 package org.jotserver.net.test;
 
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -41,8 +40,7 @@ public class TestBaseServer {
 			server.stop();
 		}
 	}
-	
-	
+
 	@Test
 	public void createIdleServerWithSetPort() {
 		assertEquals(7171, server.getPort());
@@ -161,13 +159,12 @@ public class TestBaseServer {
 		final IoSession session = new IoSessionStub();
 		
 		ConnectionListener listener = new ConnectionListener() {
-			
-			 public void connectionClosed(ClientSession client) {}
-			 public void connectionCreated(ClientSession client) {}
-			 public void connectionIdle(ClientSession client) {}
-			 public void connectionOpened(ClientSession client) {}
-			 public void messageSent(ClientSession client) {}
-			
+
+			public void connectionClosed(ClientSession client) {}
+			public void connectionCreated(ClientSession client) {}
+			public void connectionIdle(ClientSession client) {}
+			public void connectionOpened(ClientSession client) {}
+			public void messageSent(ClientSession client) {}
 			
 			public void messageReceived(ClientSession client, InputStream in) {
 				try {
@@ -183,7 +180,6 @@ public class TestBaseServer {
 				}
 			}
 		};
-		
 		server.addConnectionListener(listener);
 		
 		server.sessionCreated(session);
@@ -192,7 +188,6 @@ public class TestBaseServer {
 		server.messageReceived(session, IoBuffer.wrap(new byte[] {4, 5, 6, 7}));
 		
 		assertArrayEquals(new byte[] {1, 2, 3, 4, 5, 6, 7}, ss.toByteArray());
-		
 	}
 	
 	@Test

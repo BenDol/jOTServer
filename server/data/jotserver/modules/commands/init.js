@@ -98,5 +98,4 @@ function reportPosition(creature, parameters) {
 	}
 	
 	creature.getPrivateChannel().sendDescription("The location of " + target.getName() + " is at " + pos.toString() + ".");
-	
 }

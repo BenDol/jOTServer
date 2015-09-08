@@ -87,7 +87,6 @@ public class LoginProtocol extends EncryptableProtocol {
 		}
 	}
 
-	
 	public void parsePacket(InputStream message) throws IOException {
 		//
 	}
