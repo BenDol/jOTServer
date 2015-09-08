@@ -1,6 +1,5 @@
 package org.jotserver.ot.model.util;
 
-
 public abstract class Brain implements Task {
 	private boolean cancelled;
 
@@ -10,8 +9,7 @@ public abstract class Brain implements Task {
 	public Brain() {
 		cancelled = false;
 	}
-	
-	
+
 	public void execute(Dispatcher dispatcher) {
 		if(!isCancelled()) {
 			think();

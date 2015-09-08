@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.jiddo</groupId>
   <artifactId>jotserver</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
   <packaging>pom</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <name>jotserver</name>
+  <url>http://maven.apache.org</url>
+
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${target.jdk}</source>
+          <target>${target.jdk}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <!-- IMPORTANT -->
+          <useIncrementalCompilation>false</useIncrementalCompilation>
+        </configuration>
+      </plugin>
+
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
@@ -20,10 +38,53 @@
           </archive>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration>
+          <reuseForks>false</reuseForks>
+          <forkCount>1</forkCount>
+        </configuration>
+      </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>aspectj-maven-plugin</artifactId>
+          <version>${aspectj-maven-plugin.version}</version>
+          <executions>
+            <execution>
+              <phase>process-sources</phase>
+              <goals>
+                <goal>compile</goal>       <!-- use this goal to weave all your main classes -->
+                <goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <showWeaveInfo>true</showWeaveInfo>
+            <source>${target.jdk}</source>
+            <target>${target.jdk}</target>
+            <complianceLevel>${target.jdk}</complianceLevel>
+            <encoding>UTF-8</encoding>
+            <verbose>true</verbose>
+            <Xlint>ignore</Xlint>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>${jetty-maven-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
-  <name>jotserver</name>
-  <url>http://maven.apache.org</url>
+
   <modules>
     <module>model</module>
     <module>model.io</module>
@@ -35,6 +96,177 @@
     <module>web</module>
     <module>server</module>
   </modules>
-  <dependencies>
-  </dependencies>
+
+  <properties>
+    <target.jdk>1.7</target.jdk>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <model.version>1.0-SNAPSHOT</model.version>
+    <model.io.version>1.0-SNAPSHOT</model.io.version>
+    <protocol.version>1.0-SNAPSHOT</protocol.version>
+    <protocol.login.version>1.0-SNAPSHOT</protocol.login.version>
+    <protocol.game.version>1.0-SNAPSHOT</protocol.game.version>
+    <event.version>1.0-SNAPSHOT</event.version>
+    <net.version>1.0-SNAPSHOT</net.version>
+
+    <stripes.version>1.6.0</stripes.version>
+    <taglibs.version>1.1.2</taglibs.version>
+    <jstl.version>1.2</jstl.version>
+    <servlet-api.version>2.5</servlet-api.version>
+    <mysql.version>5.1.36</mysql.version>
+    <aspectjrt.version>1.8.2</aspectjrt.version>
+    <log4j.version>1.2.17</log4j.version>
+    <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
+    <mina-core.version>2.0.0</mina-core.version>
+    <c3p0.version>0.9.1.2</c3p0.version>
+    <rhino.version>1.7.7</rhino.version>
+
+    <junit.version>4.12</junit.version>
+    <jmock-junit4.version>2.8.1</jmock-junit4.version>
+    <jmock-cglib.version>1.2.0</jmock-cglib.version>
+    <jmock-legacy.version>2.8.1</jmock-legacy.version>
+
+    <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+    <aspectj-maven-plugin.version>1.7</aspectj-maven-plugin.version>
+    <jetty-maven-plugin.version>9.3.3.v20150827</jetty-maven-plugin.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Internal Dependencies -->
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>model</artifactId>
+        <version>${model.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>model.io</artifactId>
+        <version>${model.io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>protocol</artifactId>
+        <version>${protocol.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>protocol.login</artifactId>
+        <version>${protocol.login.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>protocol.game</artifactId>
+        <version>${protocol.game.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>event</artifactId>
+        <version>${event.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jiddo</groupId>
+        <artifactId>net</artifactId>
+        <version>${net.version}</version>
+      </dependency>
+
+      <!-- External Dependencies -->
+      <dependency>
+        <groupId>net.sourceforge.stripes</groupId>
+        <artifactId>stripes</artifactId>
+        <version>${stripes.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>${taglibs.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>${jstl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>${aspectjrt.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.jms</groupId>
+            <artifactId>jms</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.sun.jdmk</groupId>
+            <artifactId>jmxtools</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.sun.jmx</groupId>
+            <artifactId>jmxri</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j-log4j12.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.mina</groupId>
+        <artifactId>mina-core</artifactId>
+        <version>${mina-core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>c3p0</groupId>
+        <artifactId>c3p0</artifactId>
+        <version>${c3p0.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mozilla</groupId>
+        <artifactId>rhino</artifactId>
+        <version>${rhino.version}</version>
+      </dependency>
+
+      <!-- Test -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jmock</groupId>
+        <artifactId>jmock-junit4</artifactId>
+        <version>${jmock-junit4.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jmock</groupId>
+        <artifactId>jmock-cglib</artifactId>
+        <version>${jmock-cglib.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jmock</groupId>
+        <artifactId>jmock-legacy</artifactId>
+        <version>${jmock-legacy.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

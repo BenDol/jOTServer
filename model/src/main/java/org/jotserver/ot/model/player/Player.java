@@ -11,7 +11,6 @@ import org.jotserver.ot.model.map.Town;
 import org.jotserver.ot.model.util.Position;
 import org.jotserver.ot.model.world.GameWorld;
 
-
 public class Player extends Creature {
 	
 	private static long nextId = 0x10000000+1;
@@ -138,8 +137,7 @@ public class Player extends Creature {
 	}
 	
 	public String getDescription() {
-		String ret = getName() + " (Level " + getLevel() + ").";
-		return ret;
+		return getName() + " (Level " + getLevel() + ").";
 	}
 
 	public void setOutfit(Outfit outfit) {

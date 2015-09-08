@@ -5,6 +5,5 @@ import java.io.InputStream;
 
 public interface Parser {
 
-	public abstract void parse(InputStream in) throws IOException;
-
+	void parse(InputStream in) throws IOException;
 }

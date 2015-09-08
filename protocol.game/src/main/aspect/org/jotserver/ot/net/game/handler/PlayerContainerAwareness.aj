@@ -41,7 +41,7 @@ public aspect PlayerContainerAwareness {
 		if(thing instanceof Container) {
 			Container container = (Container)thing;
 			for(Creature creature : container.getContentsSpectators(Creature.class)) {
-				if(creature.isPlaced() && container.isPlaced() && 
+				if(creature.isPlaced() && container.isPlaced() &&
 						!container.canBeViewedBy(creature)) {
 					container.close(creature);
 				}
@@ -51,7 +51,7 @@ public aspect PlayerContainerAwareness {
 			if(containerAware instanceof Creature) {
 				Creature creature = (Creature)containerAware;
 				for(Container container : containerAware.getContainers()) {
-					if(creature.isPlaced() && container.isPlaced() && 
+					if(creature.isPlaced() && container.isPlaced() &&
 							!container.canBeViewedBy(creature)) {
 						container.close(creature);
 					}

@@ -47,11 +47,10 @@ public class MoveParser extends AbstractParser {
 	private void parseMove(Direction dir) {
 		Player r = getPlayer();
 		Tile tile = r.getTile();
-		ErrorType error1 = tile.queryMoveCreature(r, dir);
-		if(error1 == ErrorType.NONE) {
+		ErrorType error = tile.queryMoveCreature(r, dir);
+		if(error == ErrorType.NONE) {
 			tile.executeMoveCreature(r, dir);
 		}
-		ErrorType error = error1;
 		if(error != ErrorType.NONE) {
 			getPlayer().getGameProtocol().send(new PlayerCancelWalkWriter(getPlayer()));
 			getPlayer().getPrivateChannel().sendCancel(error);

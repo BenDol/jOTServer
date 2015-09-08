@@ -5,5 +5,5 @@ import java.util.Iterator;
 import org.jotserver.ot.model.creature.Creature;
 
 public interface Spectators<T extends Creature> extends Iterable<T> {
-	public Iterator<T> iterator();
+	Iterator<T> iterator();
 }

@@ -1,6 +1,5 @@
 package org.jotserver.ot.model.util;
 
-
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +36,6 @@ public class TestDispatcher {
 		}});
 		
 		dispatcher.run(t);
-		
 	}
 	
 	@Test
@@ -48,13 +46,9 @@ public class TestDispatcher {
 		};
 		
 		context.checking(new Expectations() {{
-			oneOf(executor).schedule(with(any(Runnable.class)), with(any(Integer.class)), with(any(TimeUnit.class)));
+			oneOf(executor).schedule(with(any(Runnable.class)), with(any(Long.class)), with(any(TimeUnit.class)));
 		}});
 		
 		dispatcher.run(t, 1337);
-		
 	}
-	
-	
-	
 }

@@ -2,49 +2,23 @@
   <parent>
     <artifactId>jotserver</artifactId>
     <groupId>org.jiddo</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.jiddo</groupId>
+
   <artifactId>server</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <name>jotserver.server</name>
+
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <mainClass>org.jotserver.JOTServer</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>       <!-- use this goal to weave all your main classes -->
-              <goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
-            </goals>
-          </execution>
-        </executions>
         <configuration>
           <showWeaveInfo>true</showWeaveInfo>
+          <source>${target.jdk}</source>
+          <target>${target.jdk}</target>
           <aspectLibraries>
             <aspectLibrary>
               <groupId>org.jiddo</groupId>
@@ -65,8 +39,6 @@
               <artifactId>model.io</artifactId>
             </weaveDependency>
           </weaveDependencies>
-          <source>1.5</source>
-          <target>1.5</target>
         </configuration>
       </plugin>
       <plugin>
@@ -102,37 +74,40 @@
       </plugin>
     </plugins>
   </build>
-  <version>0.0.1-SNAPSHOT</version>
+
   <dependencies>
     <dependency>
       <groupId>org.jiddo</groupId>
       <artifactId>model</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>event</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>protocol.game</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>model.io</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>protocol.login</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>model.io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>protocol.login</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>event</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>protocol.game</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
   	<dependency>
   		<groupId>mysql</groupId>
   		<artifactId>mysql-connector-java</artifactId>
-  		<version>5.1.6</version>
   		<scope>runtime</scope>
   	</dependency>
   </dependencies>

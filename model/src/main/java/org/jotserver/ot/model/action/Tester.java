@@ -10,19 +10,19 @@ import org.jotserver.ot.model.player.Inventory;
 import org.jotserver.ot.model.player.Player;
 
 public interface Tester {
-	public boolean test(Thing thing);
+	boolean test(Thing thing);
 	
-	public boolean test(Item item);
+	boolean test(Item item);
 
-	public boolean test(Stackable stackable);
+	boolean test(Stackable stackable);
 
-	public boolean test(Container container);
+	boolean test(Container container);
 
-	public boolean test(Inventory inventory);
+	boolean test(Inventory inventory);
 	
-	public boolean test(Creature creature);
+	boolean test(Creature creature);
 
-	public boolean test(Player player);
+	boolean test(Player player);
 	
-	public boolean test(Tile tile);
+	boolean test(Tile tile);
 }

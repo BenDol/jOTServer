@@ -23,8 +23,7 @@ public class TextInput {
 			return defaultValue;
 		} else {
 			try {
-				int value = Integer.parseInt(text);
-				return value;
+				return Integer.parseInt(text);
 			} catch(NumberFormatException e) {
 				return defaultValue;
 			}

@@ -10,7 +10,7 @@ Then, from the jotserver/server folder, run:
 mvn assembly:assembly
 
 That should produce a runnable jar file at:
-jotserver/server/target/server-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+jotserver/server/target/server-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 In order to run the server, run the runnable jar file with the current working
 directory being jotserver/server. 

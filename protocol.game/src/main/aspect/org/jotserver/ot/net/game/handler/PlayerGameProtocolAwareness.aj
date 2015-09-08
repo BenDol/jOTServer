@@ -2,9 +2,10 @@ package org.jotserver.ot.net.game.handler;
 
 import org.jotserver.ot.model.player.Player;
 import org.jotserver.ot.net.game.GameProtocol;
+import org.jotserver.ot.net.game.GameProtocolAware;
 
 public aspect PlayerGameProtocolAwareness {
-		
+
 	declare parents: Player implements GameProtocolAware;
 
 	private GameProtocol Player.protocol = null;
@@ -20,5 +21,5 @@ public aspect PlayerGameProtocolAwareness {
 	public GameProtocol Player.getGameProtocol() {
 		return protocol;
 	}
-	
+
 }

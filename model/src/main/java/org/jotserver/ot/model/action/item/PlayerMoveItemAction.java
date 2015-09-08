@@ -26,9 +26,9 @@ public class PlayerMoveItemAction extends PlayerAction {
 	}
 
 	public boolean execute() {
-		ActionVisitor remove = null;
-		ActionVisitable removeFrom = null;
-		Item moveItem = item;
+		ActionVisitor remove;
+		ActionVisitable removeFrom;
+		Item moveItem;
 		
 		if(player.getPosition().distanceTo(item.getPosition()) > 1) {
 			if(!walkToExecute(item.getPosition(), 1)) {

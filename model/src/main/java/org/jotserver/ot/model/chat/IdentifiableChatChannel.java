@@ -1,7 +1,7 @@
 package org.jotserver.ot.model.chat;
 
 public interface IdentifiableChatChannel extends ChatChannel {
-	public int getId();
+	int getId();
 
-	public String getName();
+	String getName();
 }

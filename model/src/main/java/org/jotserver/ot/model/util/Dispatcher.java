@@ -20,7 +20,6 @@ public class Dispatcher {
 	}
 	
 	private class RunnableTask implements Runnable {
-		
 		private Task task;
 
 		public RunnableTask(Task task) {
@@ -36,5 +35,4 @@ public class Dispatcher {
 			}
 		}
 	}
-	
 }

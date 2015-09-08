@@ -9,11 +9,11 @@ import org.jotserver.ot.model.map.MapAccessor;
 import org.jotserver.ot.model.player.PlayerDataAccessor;
 
 public interface GameWorldConfiguration extends ConfigurationProvider {	
-	public String getMapIdentifier();
-	public Connection getConnection();
-	public String getDirectory();
-	public PlayerDataAccessor getPlayerDataAccessor();
-	public MapAccessor getMapAccessor();
-	public ItemTypeAccessor getItemTypeAccessor();
-	public OutfitAccessor getOutfitAccessor();
+	String getMapIdentifier();
+	Connection getConnection();
+	String getDirectory();
+	PlayerDataAccessor getPlayerDataAccessor();
+	MapAccessor getMapAccessor();
+	ItemTypeAccessor getItemTypeAccessor();
+	OutfitAccessor getOutfitAccessor();
 }

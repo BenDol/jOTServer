@@ -1,9 +1,9 @@
 package org.jotserver.ot.model.item;
 
 public interface ItemTypeAccessor {
-	public ItemType getItemType(int id);
-	public void setItemType(int id, ItemType type);
-	public ItemType getItemType(String name);
-	public Item createItem(ItemType type);
-	public Item createItem(int itemId);
+	ItemType getItemType(int id);
+	void setItemType(int id, ItemType type);
+	ItemType getItemType(String name);
+	Item createItem(ItemType type);
+	Item createItem(int itemId);
 }

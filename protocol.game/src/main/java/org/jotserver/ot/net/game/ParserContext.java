@@ -7,9 +7,9 @@ import org.jotserver.ot.model.world.GameWorldAccessor;
 import org.jotserver.ot.model.world.LocalGameWorld;
 
 public interface ParserContext {
-	public Player getPlayer();
-	public LocalGameWorld getWorld();
-	public GameWorldAccessor<LocalGameWorld> getWorlds();
-	public PlayerAccessor getPlayers();
-	public AccountAccessor getAccounts();
+	Player getPlayer();
+	LocalGameWorld getWorld();
+	GameWorldAccessor<LocalGameWorld> getWorlds();
+	PlayerAccessor getPlayers();
+	AccountAccessor getAccounts();
 }

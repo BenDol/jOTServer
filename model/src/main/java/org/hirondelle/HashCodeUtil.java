@@ -1,11 +1,3 @@
-/*
- * This class was found on the following webpage:
- * http://www.javapractices.com/topic/TopicAction.do?Id=28
- * 
- * License: http://creativecommons.org/licenses/by/3.0/
- * 
- */
-
 package org.hirondelle;
 
 import java.lang.reflect.Array;

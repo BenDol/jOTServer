@@ -1,30 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
   <parent>
     <artifactId>jotserver</artifactId>
     <groupId>org.jiddo</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.jiddo</groupId>
+
   <artifactId>web</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
   <packaging>war</packaging>
   <name>jotserver.web</name>
-  <version>0.0.1-SNAPSHOT</version>
-  <url>http://maven.apache.org</url>
+
   <build>
     <finalName>web</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <!-- best lock down version of the plugin too -->
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.mortbay.jetty</groupId>
+        <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <configuration>
           <stopPort>9966</stopPort>
@@ -33,41 +26,38 @@
       </plugin>
     </plugins>
   </build>
+
   <dependencies>
+    <!-- Internal -->
+    <dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jiddo</groupId>
+      <artifactId>model.io</artifactId>
+    </dependency>
+
+    <!-- External -->
     <dependency>
     	<groupId>net.sourceforge.stripes</groupId>
     	<artifactId>stripes</artifactId>
-    	<version>1.5.1</version>
     </dependency>
     <dependency>
     	<groupId>taglibs</groupId>
     	<artifactId>standard</artifactId>
-    	<version>1.1.2</version>
     </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
     	<artifactId>jstl</artifactId>
-    	<version>1.2</version>
     </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
     	<artifactId>servlet-api</artifactId>
-    	<version>2.5</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.jiddo</groupId>
-    	<artifactId>model</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.jiddo</groupId>
-    	<artifactId>model.io</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
   		<groupId>mysql</groupId>
   		<artifactId>mysql-connector-java</artifactId>
-  		<version>5.1.6</version>
   		<scope>runtime</scope>
   	</dependency>
   </dependencies>

@@ -101,11 +101,7 @@ public abstract class Thing implements ActionVisitable {
 	}
 	
 	public boolean isVisibleTo(Creature creature) {
-		if(getParent() != null) {
-			return getParent().isVisibleTo(creature);
-		} else {
-			return false;
-		}
+		return getParent() != null && getParent().isVisibleTo(creature);
 	}
 	
 }

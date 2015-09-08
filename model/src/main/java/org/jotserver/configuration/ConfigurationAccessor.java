@@ -10,17 +10,17 @@ import org.jotserver.ot.model.world.GameWorldConfigurationAccessor;
 import java.sql.Connection;
 
 public interface ConfigurationAccessor extends ConfigurationProvider {
-	public Connection getConnection();
+	Connection getConnection();
 	
-	public int getPort();
+	int getPort();
 	
-	public AccountAccessor getAccountAccessor();
+	AccountAccessor getAccountAccessor();
 
-	public GameWorldAccessor<GameWorld> getGameWorldAccessor();
+	GameWorldAccessor<GameWorld> getGameWorldAccessor();
 
-	public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor();
+	GameWorldConfigurationAccessor getGameWorldConfigurationAccessor();
 
-	public MOTDAccessor getMOTDAccessor();
+	MOTDAccessor getMOTDAccessor();
 
-	public PlayerAccessor getPlayerAccessor();
+	PlayerAccessor getPlayerAccessor();
 }
