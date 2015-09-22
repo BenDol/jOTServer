@@ -55,13 +55,13 @@ padding: 0;
 font-size: 0.9em;
 }
 
-#avmenu ul {	
+#avmenu ul {
 list-style: none;
 width: 150px;
 margin: 0 0 20px 0;
 padding: 0;
 font-size: 1.1em;
-}	
+}
 
 #avmenu li {
 margin-bottom: 4px;
@@ -76,8 +76,8 @@ display: block;
 padding: 6px 0 0 10px;
 background: #f4f4f4;
 border-left: 4px solid #cccccc;
-}	
-	
+}
+
 #avmenu li a:hover {
 background: #eaeaea;
 color: #286ea0;

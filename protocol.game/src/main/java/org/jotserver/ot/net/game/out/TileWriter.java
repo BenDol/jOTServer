@@ -12,33 +12,33 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class TileWriter extends AbstractWriter {
-	
-	private Tile tile;
-	
-	public TileWriter(Player receiver, Tile tile) {
-		super(receiver);
-		this.tile = tile;
-	}
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		// TODO: Maxcount for tile things!
-		
-		if(tile.getGround() != null) {
-			otout.writeItem(tile.getGround()); 
-		}
-		
-		for(Item item : tile.getTopItems()) {
-			otout.writeItem(item);
-		}
-		
-		for(Creature p : tile.getCreatures()) {
-			new CreatureWriter(getReceiver(), p).write(out);
-		}
-		
-		for(Item item : tile.getDownItems()) {
-			otout.writeItem(item);
-		}
-	}
+    private Tile tile;
+
+    public TileWriter(Player receiver, Tile tile) {
+        super(receiver);
+        this.tile = tile;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        // TODO: Maxcount for tile things!
+
+        if(tile.getGround() != null) {
+            otout.writeItem(tile.getGround());
+        }
+
+        for(Item item : tile.getTopItems()) {
+            otout.writeItem(item);
+        }
+
+        for(Creature p : tile.getCreatures()) {
+            new CreatureWriter(getReceiver(), p).write(out);
+        }
+
+        for(Item item : tile.getDownItems()) {
+            otout.writeItem(item);
+        }
+    }
 
 }

@@ -1,7 +1,7 @@
 package org.jotserver.ot.model.action;
 
 public interface ActionVisitable {
-	boolean test(Tester tester);
+    boolean test(Tester tester);
 
-	void execute(Visitor visitor);
+    void execute(Visitor visitor);
 }

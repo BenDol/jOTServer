@@ -12,25 +12,25 @@ import org.jotserver.ot.net.game.AbstractWriter;
 
 public class ChannelsDialogWriter extends AbstractWriter {
 
-	private ChatManager chatManager;
-	
-	public ChannelsDialogWriter(Player player, ChatManager chatManager) {
-		super(player);
-		this.chatManager = chatManager;
-	}
-	
-	
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0xAB);
-		
-		Collection<? extends IdentifiableChatChannel> channels = chatManager.getAvailableChannels(getReceiver());
-		
-		CData.writeByte(out, channels.size());
-		
-		for(IdentifiableChatChannel channel : channels) {
-			CData.writeU16(out, channel.getId());
-			CData.writeString(out, channel.getName());
-		}
-	}
+    private ChatManager chatManager;
+
+    public ChannelsDialogWriter(Player player, ChatManager chatManager) {
+        super(player);
+        this.chatManager = chatManager;
+    }
+
+
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0xAB);
+
+        Collection<? extends IdentifiableChatChannel> channels = chatManager.getAvailableChannels(getReceiver());
+
+        CData.writeByte(out, channels.size());
+
+        for(IdentifiableChatChannel channel : channels) {
+            CData.writeU16(out, channel.getId());
+            CData.writeString(out, channel.getName());
+        }
+    }
 
 }

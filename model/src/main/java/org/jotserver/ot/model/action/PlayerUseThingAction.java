@@ -6,14 +6,14 @@ import org.jotserver.ot.model.util.Dispatcher;
 
 public class PlayerUseThingAction extends PlayerAction {
 
-	private Thing thing;
+    private Thing thing;
 
-	public PlayerUseThingAction(Dispatcher dispatcher, Player player, Thing thing) {
-		super(dispatcher, player);
-		this.thing = thing;
-	}
+    public PlayerUseThingAction(Dispatcher dispatcher, Player player, Thing thing) {
+        super(dispatcher, player);
+        this.thing = thing;
+    }
 
-	public boolean execute() {
+    public boolean execute() {
 
         if (player.getPosition().distanceTo(thing.getPosition()) > 1) {
             if (!walkToExecute(thing.getPosition(), 1)) {

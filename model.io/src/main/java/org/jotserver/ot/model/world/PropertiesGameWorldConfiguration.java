@@ -21,89 +21,89 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PropertiesGameWorldConfiguration extends PropertiesAccessor implements GameWorldConfiguration, ConnectionProvider {
-	
-	private MapAccessor mapAccessor;
-	private OTBItemTypeAccessor itemTypeAccessor;
-	private XMLOutfitAccessor outfitAccessor;
-	private ComboPooledDataSource dataSource;
 
-	public PropertiesGameWorldConfiguration(String file)
-			throws FileNotFoundException, IOException {
-		super(file);
-		mapAccessor = null;
-		itemTypeAccessor = null;
-		outfitAccessor = null;
-	}
+    private MapAccessor mapAccessor;
+    private OTBItemTypeAccessor itemTypeAccessor;
+    private XMLOutfitAccessor outfitAccessor;
+    private ComboPooledDataSource dataSource;
 
-	public Connection getConnection() {
-		if(dataSource == null) {
-			dataSource = new ComboPooledDataSource();
-			dataSource.setJdbcUrl(getDataSourceUrl());
-			dataSource.setUser(getDataSourceUsername());
-			dataSource.setPassword(getDataSourcePassword());
-		}
-		try {
-			return dataSource.getConnection();
-		} catch (SQLException e) {
-			throw new ConfigurationException(e);
-		}
-	}
-	
-	private String getDataSourceUrl() {
-		String key = "datasource.url";
-		return getString(key);
-	}
-	
-	private String getDataSourceUsername() {
-		return getString("datasource.username");
-	}
-	
-	private String getDataSourcePassword() {
-		return getString("datasource.password");
-	}
+    public PropertiesGameWorldConfiguration(String file)
+            throws FileNotFoundException, IOException {
+        super(file);
+        mapAccessor = null;
+        itemTypeAccessor = null;
+        outfitAccessor = null;
+    }
 
-	public String getDirectory() {
-		return getString("data.directory");
-	}
+    public Connection getConnection() {
+        if(dataSource == null) {
+            dataSource = new ComboPooledDataSource();
+            dataSource.setJdbcUrl(getDataSourceUrl());
+            dataSource.setUser(getDataSourceUsername());
+            dataSource.setPassword(getDataSourcePassword());
+        }
+        try {
+            return dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new ConfigurationException(e);
+        }
+    }
 
-	public String getMapIdentifier() {
-		return getString("data.map.identifier");
-	}
+    private String getDataSourceUrl() {
+        String key = "datasource.url";
+        return getString(key);
+    }
 
-	public PlayerDataAccessor getPlayerDataAccessor() {
-		return new MySQLPlayerDataAccessor(this);
-	}
+    private String getDataSourceUsername() {
+        return getString("datasource.username");
+    }
 
-	public MapAccessor getMapAccessor() {
-		if(mapAccessor == null) {
-			mapAccessor = new OTBMMapAccessor();
-		}
-		return mapAccessor;
-	}
+    private String getDataSourcePassword() {
+        return getString("datasource.password");
+    }
 
-	public ItemTypeAccessor getItemTypeAccessor() {
-		if(itemTypeAccessor == null) {
-			itemTypeAccessor = new OTBItemTypeAccessor(10000);
-			try {
-				itemTypeAccessor.loadFromOtb(new File(getDirectory(), getString("items.otb")).getAbsolutePath());
-				new XMLItemTypeLoader(itemTypeAccessor).loadFromXML(new File(getDirectory(), getString("items.xml")).getAbsolutePath());
-			} catch (IOException e) {
-				itemTypeAccessor = null;
-				throw new ConfigurationException("Failed to load items binary.", e);
-			}
-		}
-		return itemTypeAccessor;
-	}
+    public String getDirectory() {
+        return getString("data.directory");
+    }
 
-	public OutfitAccessor getOutfitAccessor() {
-		if(outfitAccessor == null) {
-			outfitAccessor = new XMLOutfitAccessor();
-			try {
-				outfitAccessor.loadFromXML(new File(getDirectory(), getString("outfits.xml")).getAbsolutePath());
-			} catch (IOException e) {
-				throw new ConfigurationException("Failed to load outfits." , e);
-			}
-		}
-		return outfitAccessor;
-	}
+    public String getMapIdentifier() {
+        return getString("data.map.identifier");
+    }
+
+    public PlayerDataAccessor getPlayerDataAccessor() {
+        return new MySQLPlayerDataAccessor(this);
+    }
+
+    public MapAccessor getMapAccessor() {
+        if(mapAccessor == null) {
+            mapAccessor = new OTBMMapAccessor();
+        }
+        return mapAccessor;
+    }
+
+    public ItemTypeAccessor getItemTypeAccessor() {
+        if(itemTypeAccessor == null) {
+            itemTypeAccessor = new OTBItemTypeAccessor(10000);
+            try {
+                itemTypeAccessor.loadFromOtb(new File(getDirectory(), getString("items.otb")).getAbsolutePath());
+                new XMLItemTypeLoader(itemTypeAccessor).loadFromXML(new File(getDirectory(), getString("items.xml")).getAbsolutePath());
+            } catch (IOException e) {
+                itemTypeAccessor = null;
+                throw new ConfigurationException("Failed to load items binary.", e);
+            }
+        }
+        return itemTypeAccessor;
+    }
+
+    public OutfitAccessor getOutfitAccessor() {
+        if(outfitAccessor == null) {
+            outfitAccessor = new XMLOutfitAccessor();
+            try {
+                outfitAccessor.loadFromXML(new File(getDirectory(), getString("outfits.xml")).getAbsolutePath());
+            } catch (IOException e) {
+                throw new ConfigurationException("Failed to load outfits." , e);
+            }
+        }
+        return outfitAccessor;
+    }
 }

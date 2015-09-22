@@ -11,19 +11,19 @@ import java.io.OutputStream;
 
 public class TileAddItemWriter extends AbstractWriter {
 
-	private Item item;
-	private Tile tile;
+    private Item item;
+    private Tile tile;
 
-	public TileAddItemWriter(Player receiver, Tile tile, Item item) {
-		super(receiver);
-		this.tile = tile;
-		this.item = item;
-	}
+    public TileAddItemWriter(Player receiver, Tile tile, Item item) {
+        super(receiver);
+        this.tile = tile;
+        this.item = item;
+    }
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x6A);
-		otout.writePosition(tile.getPosition());
-		otout.writeItem(item);
-	}
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x6A);
+        otout.writePosition(tile.getPosition());
+        otout.writeItem(item);
+    }
 }

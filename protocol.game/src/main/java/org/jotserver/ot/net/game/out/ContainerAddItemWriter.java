@@ -11,19 +11,19 @@ import java.io.OutputStream;
 
 public class ContainerAddItemWriter extends AbstractWriter {
 
-	private Container container;
-	private Item item;
+    private Container container;
+    private Item item;
 
-	public ContainerAddItemWriter(Player receiver, Container container, Item item) {
-		super(receiver);
-		this.container = container;
-		this.item = item;
-	}
+    public ContainerAddItemWriter(Player receiver, Container container, Item item) {
+        super(receiver);
+        this.container = container;
+        this.item = item;
+    }
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x70);
-		otout.writeByte(getReceiver().getContainerId(container));
-		otout.writeItem(item);
-	}
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x70);
+        otout.writeByte(getReceiver().getContainerId(container));
+        otout.writeItem(item);
+    }
 }

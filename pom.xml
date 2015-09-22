@@ -11,6 +11,36 @@
   <url>http://maven.apache.org</url>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/aspect</directory>
+        <includes>
+          <include>**/*.aj</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.java</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </testResource>
+    </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

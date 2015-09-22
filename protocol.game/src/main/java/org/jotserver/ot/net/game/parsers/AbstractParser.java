@@ -10,47 +10,47 @@ import org.jotserver.ot.net.game.MessageParser;
 import org.jotserver.ot.net.game.ParserContext;
 
 public abstract class AbstractParser implements MessageParser {
-	
-	private ParserContext context;
 
-	public AbstractParser() {
-		context = null;
-	}
-	
-	public void setContext(ParserContext context) {
-		this.context = context;
-	}
-	
-	protected ParserContext getContext() {
-		return context;
-	}
-	
-	protected Player getPlayer() {
-		return context.getPlayer();
-	}
-	
-	protected LocalGameWorld getWorld() {
-		return context.getWorld();
-	}
-	
-	protected Location findThing(Position position, int stackPos) {
-		if(position.isInventory()) {
-			return getPlayer().getInventory().getSlotLocation(position.getInventorySlot());
-		} else if(position.isContainer()) {
-			Container container = getPlayer().getContainer(position.getContainerId());
-			if(container != null) {
-				return container.getSlotLocation(position.getContainerSlot());
-			} else {
-				return null;
-			}
-		} else {
-			Tile tile = getWorld().getMap().getTile(position);
-			if(tile != null) {
-				return tile.getLocationOf(stackPos);
-			} else {
-				return null;
-			}
-		}
-	}
+    private ParserContext context;
+
+    public AbstractParser() {
+        context = null;
+    }
+
+    public void setContext(ParserContext context) {
+        this.context = context;
+    }
+
+    protected ParserContext getContext() {
+        return context;
+    }
+
+    protected Player getPlayer() {
+        return context.getPlayer();
+    }
+
+    protected LocalGameWorld getWorld() {
+        return context.getWorld();
+    }
+
+    protected Location findThing(Position position, int stackPos) {
+        if(position.isInventory()) {
+            return getPlayer().getInventory().getSlotLocation(position.getInventorySlot());
+        } else if(position.isContainer()) {
+            Container container = getPlayer().getContainer(position.getContainerId());
+            if(container != null) {
+                return container.getSlotLocation(position.getContainerSlot());
+            } else {
+                return null;
+            }
+        } else {
+            Tile tile = getWorld().getMap().getTile(position);
+            if(tile != null) {
+                return tile.getLocationOf(stackPos);
+            } else {
+                return null;
+            }
+        }
+    }
 
 }

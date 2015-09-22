@@ -10,18 +10,18 @@ import java.io.OutputStream;
 
 public class TextMessageWriter extends AbstractWriter {
 
-	private String message;
-	private TextMessageType type;
+    private String message;
+    private TextMessageType type;
 
-	public TextMessageWriter(Player receiver, TextMessageType type, String message) {
-		super(receiver);
-		this.type = type;
-		this.message = message;
-	}
+    public TextMessageWriter(Player receiver, TextMessageType type, String message) {
+        super(receiver);
+        this.type = type;
+        this.message = message;
+    }
 
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0xB4);
-		CData.writeByte(out, type.getType());
-		CData.writeString(out, message);
-	}
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0xB4);
+        CData.writeByte(out, type.getType());
+        CData.writeString(out, message);
+    }
 }

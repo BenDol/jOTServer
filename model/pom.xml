@@ -11,9 +11,9 @@
   <name>jotserver.model</name>
 
   <dependencies>
-  	<dependency>
-    	<groupId>log4j</groupId>
-    	<artifactId>log4j</artifactId>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
     </dependency>
 
     <dependency>

@@ -10,21 +10,21 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class TileAddCreatureWriter extends AbstractWriter {
-	
-	private Position position;
-	private Creature creature;
 
-	public TileAddCreatureWriter(Player receiver, Position position, Creature creature) {
-		super(receiver);
-		this.position = position;
-		this.creature = creature;
-	}
+    private Position position;
+    private Creature creature;
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x6A);
-		otout.writePosition(position);
-		
-		new CreatureWriter(getReceiver(), creature).write(out);
-	}
+    public TileAddCreatureWriter(Player receiver, Position position, Creature creature) {
+        super(receiver);
+        this.position = position;
+        this.creature = creature;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x6A);
+        otout.writePosition(position);
+
+        new CreatureWriter(getReceiver(), creature).write(out);
+    }
 }

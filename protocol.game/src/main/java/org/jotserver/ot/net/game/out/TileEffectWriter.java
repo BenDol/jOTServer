@@ -11,19 +11,19 @@ import java.io.OutputStream;
 
 public class TileEffectWriter extends AbstractWriter {
 
-	private Effect effect;
-	private Tile tile;
+    private Effect effect;
+    private Tile tile;
 
-	public TileEffectWriter(Player receiver, Tile tile, Effect effect) {
-		super(receiver);
-		this.tile = tile;
-		this.effect = effect;
-	}
+    public TileEffectWriter(Player receiver, Tile tile, Effect effect) {
+        super(receiver);
+        this.tile = tile;
+        this.effect = effect;
+    }
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x83);
-		otout.writePosition(tile.getPosition());
-		otout.writeByte(effect.getType());
-	}
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x83);
+        otout.writePosition(tile.getPosition());
+        otout.writeByte(effect.getType());
+    }
 }

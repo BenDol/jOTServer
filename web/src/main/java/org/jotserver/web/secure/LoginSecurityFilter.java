@@ -10,7 +10,7 @@ import net.sourceforge.stripes.util.StringUtil;
 
 public class LoginSecurityFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
-    	//
+        //
     }
 
     public void doFilter(ServletRequest servletRequest,
@@ -27,6 +27,6 @@ public class LoginSecurityFilter implements Filter {
     }
     
     public void destroy() {
-    	//
+        //
     }
 }

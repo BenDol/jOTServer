@@ -9,16 +9,16 @@ import org.jotserver.ot.net.game.OTDataInputStream;
 import org.jotserver.ot.net.game.PacketType;
 
 public class LookParser extends AbstractParser {
-	public void parse(PacketType type, InputStream message) throws IOException {
-		OTDataInputStream msg = new OTDataInputStream(message);
-		Position position = msg.readPosition();
-		/*int spriteId = */msg.readU16();
-		int stack = msg.readByte();
-		
-		Location location = findThing(position, stack);
-		
-		if(location != null && location.get() != null) {
-			getPlayer().lookAt(location.get());
-		}
-	}
+    public void parse(PacketType type, InputStream message) throws IOException {
+        OTDataInputStream msg = new OTDataInputStream(message);
+        Position position = msg.readPosition();
+        /*int spriteId = */msg.readU16();
+        int stack = msg.readByte();
+
+        Location location = findThing(position, stack);
+
+        if(location != null && location.get() != null) {
+            getPlayer().lookAt(location.get());
+        }
+    }
 }

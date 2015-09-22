@@ -12,14 +12,14 @@
 
   <dependencies>
     <!-- Internal -->
-  	<dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>protocol</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jiddo</groupId>
-  		<artifactId>model</artifactId>
-  	</dependency>
+      <dependency>
+          <groupId>org.jiddo</groupId>
+          <artifactId>protocol</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.jiddo</groupId>
+          <artifactId>model</artifactId>
+      </dependency>
 
     <!-- External -->
   </dependencies>

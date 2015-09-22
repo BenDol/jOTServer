@@ -10,24 +10,24 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JavaScriptEnvironment extends ScriptableObject {
-	
-	private String basePath;
 
-	public JavaScriptEnvironment(String basePath) {
-		this.basePath = basePath;
-		init();
-	}
-	
-	public void init() {
-		defineFunctionProperties(new String[] {"load"}, JavaScriptEnvironment.class, ScriptableObject.DONTENUM);
-	}
-	
-	@Override
-	public String getClassName() {
-		return "global";
-	}
-	
-	public static void load(Context cx, Scriptable thisObj, Object[] args, Function funObj) throws IOException {
+    private String basePath;
+
+    public JavaScriptEnvironment(String basePath) {
+        this.basePath = basePath;
+        init();
+    }
+
+    public void init() {
+        defineFunctionProperties(new String[] {"load"}, JavaScriptEnvironment.class, ScriptableObject.DONTENUM);
+    }
+
+    @Override
+    public String getClassName() {
+        return "global";
+    }
+
+    public static void load(Context cx, Scriptable thisObj, Object[] args, Function funObj) throws IOException {
         Scriptable scope = thisObj;
         while (!(scope instanceof JavaScriptEnvironment)) {
             scope = scope.getParentScope();

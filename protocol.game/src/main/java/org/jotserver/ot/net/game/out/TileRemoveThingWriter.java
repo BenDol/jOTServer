@@ -10,24 +10,24 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class TileRemoveThingWriter extends AbstractWriter {
-	
-	private int stack;
-	private Position position;
 
-	public TileRemoveThingWriter(Player receiver, Tile tile, int stack) {
-		this(receiver, tile.getPosition(), stack);
-	}
-	
-	public TileRemoveThingWriter(Player receiver, Position position, int stack) {
-		super(receiver);
-		this.position = position;
-		this.stack = stack;
-	}
+    private int stack;
+    private Position position;
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x6C);
-		otout.writePosition(position);
-		otout.writeByte(stack);
-	}
+    public TileRemoveThingWriter(Player receiver, Tile tile, int stack) {
+        this(receiver, tile.getPosition(), stack);
+    }
+
+    public TileRemoveThingWriter(Player receiver, Position position, int stack) {
+        super(receiver);
+        this.position = position;
+        this.stack = stack;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x6C);
+        otout.writePosition(position);
+        otout.writeByte(stack);
+    }
 }

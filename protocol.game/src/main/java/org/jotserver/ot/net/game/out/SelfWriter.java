@@ -17,45 +17,45 @@ import java.io.OutputStream;
 
 public class SelfWriter extends AbstractWriter {
 
-	private static final int OPBYTE_CANREPORT = 0x32;
-	private static final int OPBYTE = 0x0A;
-	
-	private Light light;
+    private static final int OPBYTE_CANREPORT = 0x32;
+    private static final int OPBYTE = 0x0A;
 
-	public SelfWriter(Player receiver, Light light) {
-		super(receiver);
-		this.light = light;
-	}
+    private Light light;
 
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		
-		Player self = getReceiver();
-		
-		CData.writeByte(out, OPBYTE); 
-		CData.writeU32(out, self.getId());
-		
-		CData.writeByte(out, OPBYTE_CANREPORT); 
-		CData.writeByte(out, 0x00);
-		CData.writeByte(out, self.canReportBugs() ? 1 : 0); // Can report 1/0
-		
-		writeInventory(otout);
-		
-		new PlayerStatsWriter(self).write(out);
-		new PlayerSkillsWriter(self).write(out);
-		
-		new LightWriter(getReceiver(), light).write(out); 
-		new LightWriter(self, self.getLight()).write(out);
-	}
-	
-	private void writeInventory(OTDataOutputStream out) throws IOException {
-		Inventory inventory = getReceiver().getInventory();
-		for(InventorySlot slot : InventorySlot.values()) {
-			Item item = inventory.getItem(slot);
-			if(item != null) {
-				new InventorySetItemWriter(getReceiver(), slot, item).write(out);
-			}
-		}
-	}
+    public SelfWriter(Player receiver, Light light) {
+        super(receiver);
+        this.light = light;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+
+        Player self = getReceiver();
+
+        CData.writeByte(out, OPBYTE);
+        CData.writeU32(out, self.getId());
+
+        CData.writeByte(out, OPBYTE_CANREPORT);
+        CData.writeByte(out, 0x00);
+        CData.writeByte(out, self.canReportBugs() ? 1 : 0); // Can report 1/0
+
+        writeInventory(otout);
+
+        new PlayerStatsWriter(self).write(out);
+        new PlayerSkillsWriter(self).write(out);
+
+        new LightWriter(getReceiver(), light).write(out);
+        new LightWriter(self, self.getLight()).write(out);
+    }
+
+    private void writeInventory(OTDataOutputStream out) throws IOException {
+        Inventory inventory = getReceiver().getInventory();
+        for(InventorySlot slot : InventorySlot.values()) {
+            Item item = inventory.getItem(slot);
+            if(item != null) {
+                new InventorySetItemWriter(getReceiver(), slot, item).write(out);
+            }
+        }
+    }
 
 }

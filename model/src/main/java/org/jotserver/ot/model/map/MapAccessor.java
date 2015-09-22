@@ -4,6 +4,6 @@ import org.jotserver.ot.model.world.LocalGameWorld;
 
 
 public interface MapAccessor {
-	Map loadMap(String directory, String identifier, LocalGameWorld world);
-	void freeMap(String identifier);
+    Map loadMap(String directory, String identifier, LocalGameWorld world);
+    void freeMap(String identifier);
 }

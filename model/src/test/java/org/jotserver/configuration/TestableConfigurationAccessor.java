@@ -14,44 +14,44 @@ import org.junit.Ignore;
 @Ignore
 public class TestableConfigurationAccessor implements ConfigurationAccessor {
 
-	public AccountAccessor getAccountAccessor() {
-		return null;
-	}
+    public AccountAccessor getAccountAccessor() {
+        return null;
+    }
 
-	public Connection getConnection() {
-		return null;
-	}
+    public Connection getConnection() {
+        return null;
+    }
 
-	public GameWorldAccessor<GameWorld> getGameWorldAccessor() {
-		return null;
-	}
+    public GameWorldAccessor<GameWorld> getGameWorldAccessor() {
+        return null;
+    }
 
-	public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor() {
-		return null;
-	}
+    public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor() {
+        return null;
+    }
 
-	public MOTDAccessor getMOTDAccessor() {
-		return null;
-	}
+    public MOTDAccessor getMOTDAccessor() {
+        return null;
+    }
 
-	public PlayerAccessor getPlayerAccessor() {
-		return null;
-	}
+    public PlayerAccessor getPlayerAccessor() {
+        return null;
+    }
 
-	public int getPort() {
-		return 0;
-	}
+    public int getPort() {
+        return 0;
+    }
 
-	public boolean getBoolean(String key) {
-		return false;
-	}
+    public boolean getBoolean(String key) {
+        return false;
+    }
 
-	public int getInt(String key) {
-		return 0;
-	}
+    public int getInt(String key) {
+        return 0;
+    }
 
-	public String getString(String key) {
-		return null;
-	}
+    public String getString(String key) {
+        return null;
+    }
 
 }

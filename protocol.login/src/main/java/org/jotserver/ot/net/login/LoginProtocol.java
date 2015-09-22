@@ -19,75 +19,75 @@ import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 
 public class LoginProtocol extends EncryptableProtocol {
-	private static final Logger logger = Logger.getLogger(LoginProtocol.class);
+    private static final Logger logger = Logger.getLogger(LoginProtocol.class);
 
-	public static final int PROTOCOLID = 0x01;
-	
-	private AccountAccessor accounts;
-	private PlayerAccessor players;
-	private GameWorldAccessor<GameWorld> worlds;
-	private MOTD motd;
+    public static final int PROTOCOLID = 0x01;
 
-	public LoginProtocol(AccountAccessor accounts, PlayerAccessor players, GameWorldAccessor<GameWorld> worlds, MOTD motd) {
-		super();
+    private AccountAccessor accounts;
+    private PlayerAccessor players;
+    private GameWorldAccessor<GameWorld> worlds;
+    private MOTD motd;
 
-		this.accounts = accounts;
-		this.players = players;
-		this.motd = motd;
-		this.worlds = worlds;
-	}
-	
-	public void parseFirst(InputStream message) throws IOException {
+    public LoginProtocol(AccountAccessor accounts, PlayerAccessor players, GameWorldAccessor<GameWorld> worlds, MOTD motd) {
+        super();
 
-		ClientVersionParser clientVersion = new ClientVersionParser(message, true);
+        this.accounts = accounts;
+        this.players = players;
+        this.motd = motd;
+        this.worlds = worlds;
+    }
 
-		logger.trace("Client with os " + clientVersion.getOs()
+    public void parseFirst(InputStream message) throws IOException {
+
+        ClientVersionParser clientVersion = new ClientVersionParser(message, true);
+
+        logger.trace("Client with os " + clientVersion.getOs()
             + " and version " + clientVersion.getVersion()
             + " connected. (Dat: " + clientVersion.getDataVersion()
             + ", spr: " + clientVersion.getSpriteVersion() + ", pic: "
             + clientVersion.getPicVersion() + ")");
 
-		try {
-			message = decryptStreamRSA(message);
-		} catch (GeneralSecurityException e) {
-			e.printStackTrace();
-			client.close();
-			return;
-		}
-		
-		XTEAKeyParser xteaKey = new XTEAKeyParser(message);
-		
-		AccountLoginParser accountLogin = new AccountLoginParser(message);
-		try {
-			initXTEAEngine(xteaKey.getKeys());
-			
-			Account account = accounts.getAccount(accountLogin.getNumber());
-			if(account == null || !accountLogin.validate(account)) {
-				throw new AccountAccessException("Please enter a valid account number and password.");
-			}
-			
-			OutputStream out = getEncryptedMessageOutputStream();
-			
-			new MOTDWriter(motd).write(out);
-			
-			PlayerList characters = players.getPlayerList(account, worlds);
+        try {
+            message = decryptStreamRSA(message);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+            client.close();
+            return;
+        }
 
-			new CharacterListWriter(account.getPremium(), characters).write(out);
-			
-			out.flush();
-			
-		} catch (AccessException e) {
-			OutputStream out = getEncryptedMessageOutputStream();
-			new DisconnectClientWriter(e.getMessage()).write(out);
-			out.flush();
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} finally {
-			client.close();
-		}
-	}
+        XTEAKeyParser xteaKey = new XTEAKeyParser(message);
 
-	public void parsePacket(InputStream message) throws IOException {
-		//
-	}
+        AccountLoginParser accountLogin = new AccountLoginParser(message);
+        try {
+            initXTEAEngine(xteaKey.getKeys());
+
+            Account account = accounts.getAccount(accountLogin.getNumber());
+            if(account == null || !accountLogin.validate(account)) {
+                throw new AccountAccessException("Please enter a valid account number and password.");
+            }
+
+            OutputStream out = getEncryptedMessageOutputStream();
+
+            new MOTDWriter(motd).write(out);
+
+            PlayerList characters = players.getPlayerList(account, worlds);
+
+            new CharacterListWriter(account.getPremium(), characters).write(out);
+
+            out.flush();
+
+        } catch (AccessException e) {
+            OutputStream out = getEncryptedMessageOutputStream();
+            new DisconnectClientWriter(e.getMessage()).write(out);
+            out.flush();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } finally {
+            client.close();
+        }
+    }
+
+    public void parsePacket(InputStream message) throws IOException {
+        //
+    }
 }

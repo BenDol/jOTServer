@@ -21,20 +21,20 @@
 
   <dependencies>
     <dependency>
-    	<groupId>log4j</groupId>
-    	<artifactId>log4j</artifactId>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
     </dependency>
     <dependency>
-    	<groupId>org.jiddo</groupId>
-    	<artifactId>model</artifactId>
+        <groupId>org.jiddo</groupId>
+        <artifactId>model</artifactId>
     </dependency>
     <dependency>
-    	<groupId>org.mozilla</groupId>
-    	<artifactId>rhino</artifactId>
+        <groupId>org.mozilla</groupId>
+        <artifactId>rhino</artifactId>
     </dependency>
     <dependency>
-    	<groupId>org.aspectj</groupId>
-    	<artifactId>aspectjrt</artifactId>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
         <scope>compile</scope>
     </dependency>
   </dependencies>

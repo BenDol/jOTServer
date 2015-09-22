@@ -7,15 +7,15 @@ import org.jotserver.ot.model.map.Tile;
 import org.jotserver.ot.model.util.Location;
 
 public interface Cylinder extends ActionVisitable {
-	Tile getTile();
+    Tile getTile();
 
-	Cylinder getParent();
+    Cylinder getParent();
 
-	boolean isPlaced();
+    boolean isPlaced();
 
-	boolean isVisibleTo(Creature creature);
-	
-	<T extends Creature> Spectators<T> getContentsSpectators(Class<T> type);
-	
-	Location getLocationOf(Thing thing);
+    boolean isVisibleTo(Creature creature);
+
+    <T extends Creature> Spectators<T> getContentsSpectators(Class<T> type);
+
+    Location getLocationOf(Thing thing);
 }

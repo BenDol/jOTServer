@@ -7,58 +7,58 @@ import java.util.LinkedList;
 import org.jotserver.ot.model.creature.Creature;
 
 public class PrivateChatChannel implements JoinableChatChannel, IdentifiableChatChannel, OwnedChatChannel {
-	
-	private LinkedList<Creature> members;
-	private Creature owner;
-	private int id;
 
-	public PrivateChatChannel(int id, Creature owner) {
-		this.id = id;
-		this.owner = owner;
-		members = new LinkedList<Creature>();
-	}
+    private LinkedList<Creature> members;
+    private Creature owner;
+    private int id;
 
-	public String getName() {
-		return owner.getName() + "'s Channel";
-	}
-	
-	public boolean speak(Creature creature, SpeakType type, String text) {
-		return false;
-	}
-	
-	public Creature getOwner() {
-		return owner;
-	}
+    public PrivateChatChannel(int id, Creature owner) {
+        this.id = id;
+        this.owner = owner;
+        members = new LinkedList<Creature>();
+    }
 
-	public boolean close(Creature creature) {
-		return false;
-	}
+    public String getName() {
+        return owner.getName() + "'s Channel";
+    }
 
-	public int getId() {
-		return id;
-	}
+    public boolean speak(Creature creature, SpeakType type, String text) {
+        return false;
+    }
 
-	public Collection<Creature> getMembers() {
-		return Collections.unmodifiableCollection(members);
-	}
+    public Creature getOwner() {
+        return owner;
+    }
 
-	public boolean invite(Creature creature, Creature invited) {
-		return false;
-	}
+    public boolean close(Creature creature) {
+        return false;
+    }
 
-	public boolean join(Creature creature) {
-		return false;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public boolean kick(Creature creature, Creature kicked) {
-		return false;
-	}
+    public Collection<Creature> getMembers() {
+        return Collections.unmodifiableCollection(members);
+    }
 
-	public boolean uninvite(Creature creature, Creature invited) {
-		return false;
-	}
+    public boolean invite(Creature creature, Creature invited) {
+        return false;
+    }
 
-	public boolean isInvited(Creature creature) {
-		return owner.equals(creature);
-	}
+    public boolean join(Creature creature) {
+        return false;
+    }
+
+    public boolean kick(Creature creature, Creature kicked) {
+        return false;
+    }
+
+    public boolean uninvite(Creature creature, Creature invited) {
+        return false;
+    }
+
+    public boolean isInvited(Creature creature) {
+        return owner.equals(creature);
+    }
 }

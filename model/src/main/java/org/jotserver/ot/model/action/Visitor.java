@@ -10,19 +10,19 @@ import org.jotserver.ot.model.player.Inventory;
 import org.jotserver.ot.model.player.Player;
 
 public interface Visitor {
-	void execute(Thing thing);
-	
-	void execute(Item item);
+    void execute(Thing thing);
 
-	void execute(Stackable stackable);
+    void execute(Item item);
 
-	void execute(Container container);
+    void execute(Stackable stackable);
 
-	void execute(Inventory inventory);
-	
-	void execute(Creature creature);
+    void execute(Container container);
 
-	void execute(Player player);
-	
-	void execute(Tile tile);
+    void execute(Inventory inventory);
+
+    void execute(Creature creature);
+
+    void execute(Player player);
+
+    void execute(Tile tile);
 }

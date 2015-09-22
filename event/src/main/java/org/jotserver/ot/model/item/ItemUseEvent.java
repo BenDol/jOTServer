@@ -4,9 +4,9 @@ import org.jotserver.ot.model.creature.Creature;
 import org.jotserver.ot.model.world.LocalGameWorld;
 
 public interface ItemUseEvent {
-	LocalGameWorld getWorld();
+    LocalGameWorld getWorld();
 
-	Creature getCreature();
+    Creature getCreature();
 
-	Item getItem();
+    Item getItem();
 }

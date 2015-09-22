@@ -10,15 +10,15 @@ import java.io.OutputStream;
 
 public class CloseContainerWriter extends AbstractWriter {
 
-	private Container container;
+    private Container container;
 
-	public CloseContainerWriter(Player receiver, Container container) {
-		super(receiver);
-		this.container = container;
-	}
+    public CloseContainerWriter(Player receiver, Container container) {
+        super(receiver);
+        this.container = container;
+    }
 
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0x6F);
-		CData.writeByte(out, getReceiver().getContainerId(container));
-	}
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0x6F);
+        CData.writeByte(out, getReceiver().getContainerId(container));
+    }
 }

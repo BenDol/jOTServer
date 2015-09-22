@@ -11,19 +11,19 @@ import java.io.OutputStream;
 
 public class CreatureChangeOutfitWriter extends AbstractWriter {
 
-	private Outfit outfit;
-	private Creature creature;
+    private Outfit outfit;
+    private Creature creature;
 
-	public CreatureChangeOutfitWriter(Player receiver, Creature creature) {
-		super(receiver);
-		this.creature = creature;
-		this.outfit = creature.getOutfit();
-	}
+    public CreatureChangeOutfitWriter(Player receiver, Creature creature) {
+        super(receiver);
+        this.creature = creature;
+        this.outfit = creature.getOutfit();
+    }
 
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0x8E);
-		CData.writeU32(out, creature.getId());
-		new CreatureOutfitWriter(getReceiver(), outfit).write(out);
-	}
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0x8E);
+        CData.writeU32(out, creature.getId());
+        new CreatureOutfitWriter(getReceiver(), outfit).write(out);
+    }
 
 }

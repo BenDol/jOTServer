@@ -9,12 +9,12 @@ import java.io.OutputStream;
 
 public class PlayerCancelWalkWriter extends AbstractWriter {
 
-	public PlayerCancelWalkWriter(Player receiver) {
-		super(receiver);
-	}
+    public PlayerCancelWalkWriter(Player receiver) {
+        super(receiver);
+    }
 
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0xB5);
-		CData.writeByte(out, getReceiver().getDirection().ordinal());
-	}
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0xB5);
+        CData.writeByte(out, getReceiver().getDirection().ordinal());
+    }
 }

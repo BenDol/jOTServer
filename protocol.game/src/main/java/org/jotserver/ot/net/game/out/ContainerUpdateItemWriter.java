@@ -10,21 +10,21 @@ import java.io.OutputStream;
 
 public class ContainerUpdateItemWriter extends AbstractWriter {
 
-	private int slot;
-	private Container container;
-	
-	public ContainerUpdateItemWriter(Player receiver, Container container, int slot) {
-		super(receiver);
-		this.container = container;
-		this.slot = slot;
-	}
-	
-	public void write(OutputStream out) throws IOException {
-		OTDataOutputStream otout = new OTDataOutputStream(out);
-		otout.writeByte(0x71);
-		otout.writeByte(getReceiver().getContainerId(container));
-		otout.writeByte(slot);
-		otout.writeItem(container.getItem(slot));
-	}
-	
+    private int slot;
+    private Container container;
+
+    public ContainerUpdateItemWriter(Player receiver, Container container, int slot) {
+        super(receiver);
+        this.container = container;
+        this.slot = slot;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        OTDataOutputStream otout = new OTDataOutputStream(out);
+        otout.writeByte(0x71);
+        otout.writeByte(getReceiver().getContainerId(container));
+        otout.writeByte(slot);
+        otout.writeItem(container.getItem(slot));
+    }
+
 }

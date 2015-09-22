@@ -5,5 +5,5 @@ import java.io.OutputStream;
 
 public interface Writer {
 
-	void write(OutputStream out) throws IOException;
+    void write(OutputStream out) throws IOException;
 }

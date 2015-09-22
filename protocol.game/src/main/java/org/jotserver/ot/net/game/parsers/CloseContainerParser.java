@@ -8,11 +8,11 @@ import org.jotserver.ot.model.item.Container;
 import org.jotserver.ot.net.game.PacketType;
 
 public class CloseContainerParser extends AbstractParser {
-	public void parse(PacketType type, InputStream message) throws IOException {
-		int containerId = CData.readByte(message);
-		Container container = getPlayer().getContainer(containerId);
-		if(container != null) {
-			container.close(getPlayer());
-		}
-	}
+    public void parse(PacketType type, InputStream message) throws IOException {
+        int containerId = CData.readByte(message);
+        Container container = getPlayer().getContainer(containerId);
+        if(container != null) {
+            container.close(getPlayer());
+        }
+    }
 }

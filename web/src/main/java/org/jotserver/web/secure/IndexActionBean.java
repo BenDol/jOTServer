@@ -11,19 +11,19 @@ import org.jotserver.ot.model.player.PlayerList;
 import org.jotserver.web.AbstractActionBean;
 
 public class IndexActionBean extends AbstractActionBean {
-	
-	private PlayerList players;
-	
-	@DefaultHandler
-	public Resolution view() throws PlayerAccessException {
-		Account account = getContext().getUserAccount();
-		ConfigurationAccessor config = getContext().getConfig();
-		players = config.getPlayerAccessor().getPlayerList(account, config.getGameWorldAccessor());
-		return new ForwardResolution("/WEB-INF/view/secure/Index.jsp");
-	}
-	
-	public PlayerList getPlayers() {
-		return players;
-	}
-	
+
+    private PlayerList players;
+
+    @DefaultHandler
+    public Resolution view() throws PlayerAccessException {
+        Account account = getContext().getUserAccount();
+        ConfigurationAccessor config = getContext().getConfig();
+        players = config.getPlayerAccessor().getPlayerList(account, config.getGameWorldAccessor());
+        return new ForwardResolution("/WEB-INF/view/secure/Index.jsp");
+    }
+
+    public PlayerList getPlayers() {
+        return players;
+    }
+
 }

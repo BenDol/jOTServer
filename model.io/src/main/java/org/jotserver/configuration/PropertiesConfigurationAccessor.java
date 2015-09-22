@@ -20,87 +20,87 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PropertiesConfigurationAccessor extends PropertiesAccessor implements ConfigurationAccessor, MOTDAccessor, ConnectionProvider {
-	
-	private PropertiesGameWorldAccessor gameWorldAccessor;
-	private ComboPooledDataSource dataSource;
-	
-	public PropertiesConfigurationAccessor(String file) throws FileNotFoundException, IOException {
-		super(file);
-		gameWorldAccessor = null;
-		dataSource = null;
-	}
 
-	public Connection getConnection() {
-		if(dataSource == null) {
-			dataSource = new ComboPooledDataSource();
-			//cpds.setDriverClass("org.postgresql.Driver");
-			dataSource.setJdbcUrl(getDataSourceUrl());
-			dataSource.setUser(getDataSourceUsername());
-			dataSource.setPassword(getDataSourcePassword());
-		}
-		try {
-			return dataSource.getConnection();
-		} catch (SQLException e) {
-			throw new ConfigurationException(e);
-		}
-	}
-	
-	private String getDataSourceUrl() {
-		String key = "datasource.url";
-		return getString(key);
-	}
-	
-	private String getDataSourceUsername() {
-		return getString("datasource.username");
-	}
-	
-	private String getDataSourcePassword() {
-		return getString("datasource.password");
-	}
-	
-	private String getHost() {
-		return getString("host");
-	}
-	
-	
-	public int getPort() {
-		return getInt("port");
-	}
+    private PropertiesGameWorldAccessor gameWorldAccessor;
+    private ComboPooledDataSource dataSource;
 
-	public AccountAccessor getAccountAccessor() {
-		return new MySQLAccountAccessor(this);
-	}
+    public PropertiesConfigurationAccessor(String file) throws FileNotFoundException, IOException {
+        super(file);
+        gameWorldAccessor = null;
+        dataSource = null;
+    }
 
-	public GameWorldAccessor<GameWorld> getGameWorldAccessor() {
-		return getPropertiesGameWorldAccessor();
-	}
+    public Connection getConnection() {
+        if(dataSource == null) {
+            dataSource = new ComboPooledDataSource();
+            //cpds.setDriverClass("org.postgresql.Driver");
+            dataSource.setJdbcUrl(getDataSourceUrl());
+            dataSource.setUser(getDataSourceUsername());
+            dataSource.setPassword(getDataSourcePassword());
+        }
+        try {
+            return dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new ConfigurationException(e);
+        }
+    }
 
-	private PropertiesGameWorldAccessor getPropertiesGameWorldAccessor() {
-		if(gameWorldAccessor == null) {
-			try {
-				gameWorldAccessor = new PropertiesGameWorldAccessor(getParentPath() + getString("world.file"), getHost(), getPort());
-			} catch (FileNotFoundException e) {
-				throw new ConfigurationException("World file not found.", e);
-			} catch (IOException e) {
-				throw new ConfigurationException("Failed to read world file.", e);
-			}
-		}
-		return gameWorldAccessor;
-	}
+    private String getDataSourceUrl() {
+        String key = "datasource.url";
+        return getString(key);
+    }
 
-	public MOTD getMOTD() throws MOTDAccessException {
-		return new MOTD(getInt("motd.number", 1), get("motd.message", "Welcome"));
-	}
+    private String getDataSourceUsername() {
+        return getString("datasource.username");
+    }
 
-	public MOTDAccessor getMOTDAccessor() {
-		return this;
-	}
+    private String getDataSourcePassword() {
+        return getString("datasource.password");
+    }
 
-	public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor() {
-		return getPropertiesGameWorldAccessor();
-	}
+    private String getHost() {
+        return getString("host");
+    }
 
-	public PlayerAccessor getPlayerAccessor() {
-		return new MySQLPlayerAccessor(this);
-	}
+
+    public int getPort() {
+        return getInt("port");
+    }
+
+    public AccountAccessor getAccountAccessor() {
+        return new MySQLAccountAccessor(this);
+    }
+
+    public GameWorldAccessor<GameWorld> getGameWorldAccessor() {
+        return getPropertiesGameWorldAccessor();
+    }
+
+    private PropertiesGameWorldAccessor getPropertiesGameWorldAccessor() {
+        if(gameWorldAccessor == null) {
+            try {
+                gameWorldAccessor = new PropertiesGameWorldAccessor(getParentPath() + getString("world.file"), getHost(), getPort());
+            } catch (FileNotFoundException e) {
+                throw new ConfigurationException("World file not found.", e);
+            } catch (IOException e) {
+                throw new ConfigurationException("Failed to read world file.", e);
+            }
+        }
+        return gameWorldAccessor;
+    }
+
+    public MOTD getMOTD() throws MOTDAccessException {
+        return new MOTD(getInt("motd.number", 1), get("motd.message", "Welcome"));
+    }
+
+    public MOTDAccessor getMOTDAccessor() {
+        return this;
+    }
+
+    public GameWorldConfigurationAccessor getGameWorldConfigurationAccessor() {
+        return getPropertiesGameWorldAccessor();
+    }
+
+    public PlayerAccessor getPlayerAccessor() {
+        return new MySQLPlayerAccessor(this);
+    }
 }

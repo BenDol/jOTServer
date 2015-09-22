@@ -48,15 +48,15 @@ WorldState = org.jotserver.ot.model.world.WorldState;
  */
 
 function teleportCreature(creature, toTile, effect) {
-	var fromTile = creature.getTile();
-	if(toTile != null && toTile != fromTile) {
-		fromTile.executeRemoveCreature(creature);
-		toTile.executeAddCreature(creature);
-		if(effect) {
-			fromTile.executeAddEffect(Effect.TELEPORT);
-			toTile.executeAddEffect(Effect.TELEPORT);
-		}
-	} else {
-		creature.getPrivateChannel().sendCancel("You cannot teleport to that location.");
-	}
+    var fromTile = creature.getTile();
+    if(toTile != null && toTile != fromTile) {
+        fromTile.executeRemoveCreature(creature);
+        toTile.executeAddCreature(creature);
+        if(effect) {
+            fromTile.executeAddEffect(Effect.TELEPORT);
+            toTile.executeAddEffect(Effect.TELEPORT);
+        }
+    } else {
+        creature.getPrivateChannel().sendCancel("You cannot teleport to that location.");
+    }
 }

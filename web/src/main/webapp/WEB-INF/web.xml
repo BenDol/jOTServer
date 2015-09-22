@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>FirstTest</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.action</welcome-file>
-		<welcome-file>Index.html</welcome-file>
-		<welcome-file>Index.htm</welcome-file>
-		<welcome-file>Index.jsp</welcome-file>
-		<welcome-file>Index.action</welcome-file>
-	</welcome-file-list>
-	
-	<context-param>
-		<param-name>
-			javax.servlet.jsp.jstl.fmt.localizationContext
-		</param-name>
-		<param-value>StripesResources</param-value>
-	</context-param>
-	
-	<filter>
-		<display-name>Stripes Filter</display-name>
-		<filter-name>StripesFilter</filter-name>
-		<filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
-		
-		<init-param>
-			<param-name>ActionResolver.Class</param-name>
-			<param-value>org.jotserver.web.DummyBasedActionResolver</param-value>
-		</init-param>
-		
-		<init-param>
-			<param-name>ActionResolver.Packages</param-name>
-			<param-value>org.jotserver.web</param-value>
-		</init-param>
+    <display-name>FirstTest</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.action</welcome-file>
+        <welcome-file>Index.html</welcome-file>
+        <welcome-file>Index.htm</welcome-file>
+        <welcome-file>Index.jsp</welcome-file>
+        <welcome-file>Index.action</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>
+            javax.servlet.jsp.jstl.fmt.localizationContext
+        </param-name>
+        <param-value>StripesResources</param-value>
+    </context-param>
+
+    <filter>
+        <display-name>Stripes Filter</display-name>
+        <filter-name>StripesFilter</filter-name>
+        <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+
+        <init-param>
+            <param-name>ActionResolver.Class</param-name>
+            <param-value>org.jotserver.web.DummyBasedActionResolver</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>ActionResolver.Packages</param-name>
+            <param-value>org.jotserver.web</param-value>
+        </init-param>
 
         <init-param>
             <param-name>Stripes.EncryptionKey</param-name>
@@ -44,23 +44,23 @@
             <param-value>org.jotserver.web.DefaultActionBeanContext</param-value>
         </init-param>
         
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>StripesFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>StripesFilter</filter-name>
-		<servlet-name>StripesDispatcher</servlet-name>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
-	
-	
-	
-	<filter>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>StripesFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>StripesFilter</filter-name>
+        <servlet-name>StripesDispatcher</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+
+
+    <filter>
         <description>Provides login security for JAMS</description>
         <filter-name>LoginSecurityFilter</filter-name>
         <filter-class>org.jotserver.web.secure.LoginSecurityFilter</filter-class>
@@ -71,16 +71,16 @@
         <url-pattern>/secure/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-	
-	
-	<servlet>
-		<servlet-name>StripesDispatcher</servlet-name>
-		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>StripesDispatcher</servlet-name>
-		<url-pattern>*.action</url-pattern>
-	</servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>StripesDispatcher</servlet-name>
+        <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StripesDispatcher</servlet-name>
+        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -6,20 +6,20 @@ import org.jotserver.ot.net.game.GameProtocolAware;
 
 public aspect PlayerGameProtocolAwareness {
 
-	declare parents: Player implements GameProtocolAware;
+    declare parents: Player implements GameProtocolAware;
 
-	private GameProtocol Player.protocol = null;
-	
-	public void Player.setGameProtocol(GameProtocol protocol) {
-		this.protocol = protocol;
-	}
-	
-	public boolean Player.isOnline() {
-		return protocol != null && protocol.isOnline();
-	}
-	
-	public GameProtocol Player.getGameProtocol() {
-		return protocol;
-	}
+    private GameProtocol Player.protocol = null;
+
+    public void Player.setGameProtocol(GameProtocol protocol) {
+        this.protocol = protocol;
+    }
+
+    public boolean Player.isOnline() {
+        return protocol != null && protocol.isOnline();
+    }
+
+    public GameProtocol Player.getGameProtocol() {
+        return protocol;
+    }
 
 }

@@ -40,25 +40,25 @@
 
     <!-- External -->
     <dependency>
-    	<groupId>net.sourceforge.stripes</groupId>
-    	<artifactId>stripes</artifactId>
+        <groupId>net.sourceforge.stripes</groupId>
+        <artifactId>stripes</artifactId>
     </dependency>
     <dependency>
-    	<groupId>taglibs</groupId>
-    	<artifactId>standard</artifactId>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
     </dependency>
     <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>jstl</artifactId>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
     </dependency>
     <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>servlet-api</artifactId>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
     </dependency>
     <dependency>
-  		<groupId>mysql</groupId>
-  		<artifactId>mysql-connector-java</artifactId>
-  		<scope>runtime</scope>
-  	</dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <scope>runtime</scope>
+      </dependency>
   </dependencies>
 </project>

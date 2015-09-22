@@ -12,52 +12,52 @@ import org.junit.Test;
 
 public class TestPrivateChatChannel {
 
-	private static final int ID = 0x22;
-	private static final String NAME = "SomeName";
-	private static final long CID = 1337;
-	private PrivateChatChannel channel;
-	private TestableCreature owner;
+    private static final int ID = 0x22;
+    private static final String NAME = "SomeName";
+    private static final long CID = 1337;
+    private PrivateChatChannel channel;
+    private TestableCreature owner;
 
-	@Before
-	public void setUp() throws Exception {
-		owner = new TestableCreature(CID, NAME);
-		channel = new PrivateChatChannel(ID, owner);
-	}
-	
-	@Test
-	public void hasOwner() {
-		assertEquals(owner, channel.getOwner());
-	}
-	
-	@Test
-	public void hasId() {
-		assertEquals(ID, channel.getId());
-	}
-	
-	@Test
-	public void constructsCorrectName() {
-		assertEquals(NAME + "'s Channel", channel.getName());
-	}
-	
-	@Test
-	public void newChannelHasNoMembers() {
-		assertTrue(channel.getMembers().isEmpty());
-	}
-	
-	@Test
-	public void uninvitedCreatureIsNotInvited() {
-		Creature c = new TestableCreature(1, "1");
-		assertFalse(channel.isInvited(c));
-	}
-	
-	@Test
-	public void ownerIsInvited() {
-		assertTrue(channel.isInvited(owner));
-	}
-	
-	@Test
-	public void canInviteCreature() {
-		
-	}
+    @Before
+    public void setUp() throws Exception {
+        owner = new TestableCreature(CID, NAME);
+        channel = new PrivateChatChannel(ID, owner);
+    }
+
+    @Test
+    public void hasOwner() {
+        assertEquals(owner, channel.getOwner());
+    }
+
+    @Test
+    public void hasId() {
+        assertEquals(ID, channel.getId());
+    }
+
+    @Test
+    public void constructsCorrectName() {
+        assertEquals(NAME + "'s Channel", channel.getName());
+    }
+
+    @Test
+    public void newChannelHasNoMembers() {
+        assertTrue(channel.getMembers().isEmpty());
+    }
+
+    @Test
+    public void uninvitedCreatureIsNotInvited() {
+        Creature c = new TestableCreature(1, "1");
+        assertFalse(channel.isInvited(c));
+    }
+
+    @Test
+    public void ownerIsInvited() {
+        assertTrue(channel.isInvited(owner));
+    }
+
+    @Test
+    public void canInviteCreature() {
+
+    }
 
 }

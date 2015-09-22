@@ -10,17 +10,17 @@ import org.jotserver.ot.net.game.AbstractWriter;
 
 public class CreatureHealthWriter extends AbstractWriter {
 
-	private Creature creature;
+    private Creature creature;
 
-	public CreatureHealthWriter(Player receiver, Creature creature) {
-		super(receiver);
-		this.creature = creature;
-	}
-	
-	public void write(OutputStream out) throws IOException {
-		CData.writeByte(out, 0x8C);
-		CData.writeU32(out, creature.getId());
-		CData.writeByte(out, creature.getHealthPercent());
-	}
-	
+    public CreatureHealthWriter(Player receiver, Creature creature) {
+        super(receiver);
+        this.creature = creature;
+    }
+
+    public void write(OutputStream out) throws IOException {
+        CData.writeByte(out, 0x8C);
+        CData.writeU32(out, creature.getId());
+        CData.writeByte(out, creature.getHealthPercent());
+    }
+
 }
