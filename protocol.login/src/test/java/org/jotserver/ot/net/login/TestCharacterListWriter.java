@@ -1,6 +1,5 @@
 package org.jotserver.ot.net.login;
 
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

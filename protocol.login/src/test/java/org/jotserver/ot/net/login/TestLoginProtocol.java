@@ -1,10 +1,9 @@
 package org.jotserver.ot.net.login;
 
-
 import org.junit.Ignore;
 
 @Ignore
-public class TestLoginProtocoll {
+public class TestLoginProtocol {
     /*
     private AccountAccessor accounts;
     private PlayerAccessor players;
