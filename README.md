@@ -7,7 +7,7 @@ Java Open Tibia server implementation made using SQL database for storage, Aspec
 
 In order to compile the project, ensure that Maven is installed on your system. 
 Then, from the jotserver/server folder, run:
-mvn assembly:assembly
+`mvn clean install assembly:assembly`
 
 That should produce a runnable jar file at:
 jotserver/server/target/server-1.0-SNAPSHOT-jar-with-dependencies.jar
